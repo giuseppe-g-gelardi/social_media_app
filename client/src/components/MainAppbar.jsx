@@ -54,7 +54,7 @@ export default function MainAppBar(props) {
         <AppBar position="fixed" elevation={10} color='transparent'>
           <Toolbar>
             <Typography variant="h5" component="div" sx={{flexGrow: 1}}>
-              Welcome to the Tubeee
+              ello gov'na
             </Typography>
             
 
