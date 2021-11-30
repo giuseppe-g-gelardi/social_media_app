@@ -1,9 +1,12 @@
 import React from 'react'
+import { Container } from '@material-ui/core'
 
 export default function Home() {
   return (
-    <div>
-      <h1>Home Page</h1>
-    </div>
+    <Container>
+      <Container >
+        <h1>Welcome...</h1>
+      </Container>
+    </Container>
   )
 }
