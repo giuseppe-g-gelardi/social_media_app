@@ -1,9 +1,10 @@
 const { User, validateUser } = require('../models/user')
 const { Product, validate } = require('../models/product')
+const bcrypt = require('bcrypt')
 const express = require('express')
 const router = express.Router()
 
-// add
+// add item to cart
 router.post('./:userId/shoppingcart/:productId', async (req, res) => {
   try {
     const user = await User.findById(req.params.userId)
@@ -28,8 +29,7 @@ router.post('./:userId/shoppingcart/:productId', async (req, res) => {
   }
 })
 
-// put/update
-
+// put/update item in cart
 router.put('./:userId/shoppingcart/:productId', async (req, res) => {
   try {
     const { error } = validate(req.body)
@@ -58,8 +58,7 @@ router.put('./:userId/shoppingcart/:productId', async (req, res) => {
   }
 })
 
-// delete
-
+// delete item from cart
 router.delete('./:userId/shoppingcart/:productId', async (req, res) => {
   try{
 
@@ -82,9 +81,16 @@ router.delete('./:userId/shoppingcart/:productId', async (req, res) => {
   }
 })
 
+//
+//
+//
+//
+// !
+// ?
+// *
 // start jwt tutorial
 
-// add new user
+// ! add new user
 router.post('/', async (req, res) => {
   try {
     const { error } = validateUser(req.body)
@@ -94,10 +100,11 @@ router.post('/', async (req, res) => {
     let user = await User.findOne({ email: req.body.email })
     if (user) return res.status(400).send('User already registered.')
 
+    const salt = await bcrypt.genSalt(10)
     user = new User({
       name: req.body.name,
       email: req.body.email,
-      password: req.body.password,
+      password: await bcrypt.hash(req.body.password, salt),
     })
 
     await user.save()
