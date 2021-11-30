@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from '@material-ui/core'
-// import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import { lightTheme, darkTheme } from './components/theme/Theme'
@@ -17,10 +16,10 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <MainAppbar check={darkMode} change={() => setDarkMode(!darkMode)} />
-      <Routes>
-        <Route path='/' element={<Home />} />
-      </Routes>
+        <MainAppbar check={darkMode} change={() => setDarkMode(!darkMode)} />
+          <Routes>
+            <Route path='/' element={<Home />} />
+          </Routes>
     </ThemeProvider>
   )
 }
