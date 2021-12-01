@@ -5,12 +5,14 @@ const express = require('express')
 const router = express.Router()
 const dotenv = require('dotenv')
 const jwt = require('jsonwebtoken');
+const auth = require('../middleware/auth');
+
 
 dotenv.config()
 
 
 // add item to cart
-router.post('./:userId/shoppingcart/:productId', async (req, res) => {
+router.post('./:userId/shoppingcart/:productId', auth, async (req, res) => {
   try {
     const user = await User.findById(req.params.userId)
     if (!user) return res.status(400).send(
@@ -35,7 +37,7 @@ router.post('./:userId/shoppingcart/:productId', async (req, res) => {
 })
 
 // put/update item in cart
-router.put('./:userId/shoppingcart/:productId', async (req, res) => {
+router.put('./:userId/shoppingcart/:productId',  auth, async (req, res) => {
   try {
     const { error } = validate(req.body)
     if (error) return res.status(400).send(error)
@@ -64,7 +66,7 @@ router.put('./:userId/shoppingcart/:productId', async (req, res) => {
 })
 
 // delete item from cart
-router.delete('./:userId/shoppingcart/:productId', async (req, res) => {
+router.delete('./:userId/shoppingcart/:productId',  auth, async (req, res) => {
   try{
 
   const user = await User.findById(req.params.userId)
