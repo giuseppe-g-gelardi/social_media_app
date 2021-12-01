@@ -114,11 +114,8 @@ router.post('/', async (req, res) => {
 
     await user.save()
 
-    const token = jwt.sign(
-      { _id: user._id, name: user.name },
-      // config.get('jwtSecret')
-      process.env.JWT
-      );
+    const token = user.generateAuthToken()
+    // const token = jwt.sign({ _id: user._id, name: user.name }, process.env.JWT);
        return res
        .header('x-auth-token', token)
        .header('access-control-expose-headers', 'x-auth-token')
