@@ -1,7 +1,10 @@
 const mongoose = require('mongoose')
 const Joi = require('joi')
 const { productSchema } = require('./products')
+const jwt = require('jsonwebtoken')
+const dotenv = require('dotenv')
 
+dotenv.config()
 
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true, minlength: 5, maxlength: 50 },
@@ -10,6 +13,10 @@ const userSchema = new mongoose.Schema({
   isGoldMember: { type: String, default: false },
   shoppingCart: { type: [productSchema], default: [] },
 })
+
+userSchema.methods.generateAuthToken = () => {
+  return jwt.sign({ _id: this._id, name: this.name }, process.env.JWT) 
+}
 
 const User = mongoose.model('User', userSchema)
 
