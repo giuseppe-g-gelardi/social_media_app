@@ -13,6 +13,9 @@ const userSchema = new mongoose.Schema({
   isGoldMember: { type: String, default: false },
   shoppingCart: { type: [productSchema], default: [] },
   isAdmin: { type: Boolean, default: false },
+  friendsList: { type: Array, default: []},
+  privateMessages: { type: Array, default: [] },
+  friendRequests: { type: Array, default: [] }    
 })
 
 userSchema.methods.generateAuthToken = () => {
