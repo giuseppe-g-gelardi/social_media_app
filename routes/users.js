@@ -124,7 +124,7 @@ router.post('/', async (req, res) => {
        .header('access-control-expose-headers', 'x-auth-token')
        .send({ _id: user._id, name: user.name, email: user.email });
 
-    return res.send({ _id: user._id, name: user.name, email: user.email })
+    // return res.send({ _id: user._id, name: user.name, email: user.email })
   } catch (ex) {
     return res.status(500).send(`Internal Server Error: ${ex}`)
   }
