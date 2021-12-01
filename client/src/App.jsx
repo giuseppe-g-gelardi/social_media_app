@@ -4,8 +4,9 @@ import { ThemeProvider } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import { lightTheme, darkTheme } from './components/theme/Theme'
-import Home from './pages/Home'
 import MainAppbar from './components/MainAppbar';
+import Home from './pages/Home'
+import Landing from './pages/Landing'
 
 
 export default function App() {
@@ -17,9 +18,11 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
         <MainAppbar check={darkMode} change={() => setDarkMode(!darkMode)} />
-          <Routes>
+          {/* <Routes>
             <Route path='/' element={<Home />} />
-          </Routes>
+          </Routes> */}
+          <Home />
+          <Landing />
     </ThemeProvider>
   )
 }
