@@ -6,7 +6,6 @@ const products = require('./routes/products')
 const comments = require('./routes/comment')
 const users = require('./routes/users')
 
-
 const app = express()
 
 connectDB()
