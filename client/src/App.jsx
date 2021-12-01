@@ -7,6 +7,7 @@ import { lightTheme, darkTheme } from './components/theme/Theme'
 import MainAppbar from './components/MainAppbar';
 import Home from './pages/Home'
 import Landing from './pages/Landing'
+import Error from './pages/Error'
 
 
 export default function App() {
@@ -18,11 +19,11 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
         <MainAppbar check={darkMode} change={() => setDarkMode(!darkMode)} />
-          {/* <Routes>
-            <Route path='/' element={<Home />} />
-          </Routes> */}
-          <Home />
-          <Landing />
+          <Routes>
+            <Route path='/' element={<Landing />} />
+            <Route path='/home' element={<Home />} />
+            <Route path='*' element={<Error />} />
+          </Routes>
     </ThemeProvider>
   )
 }
