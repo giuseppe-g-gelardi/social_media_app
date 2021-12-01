@@ -12,10 +12,11 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true, minlength: 5, maxlength: 1024 },
   isGoldMember: { type: String, default: false },
   shoppingCart: { type: [productSchema], default: [] },
+  isAdmin: { type: Boolean, default: false },
 })
 
 userSchema.methods.generateAuthToken = () => {
-  return jwt.sign({ _id: this._id, name: this.name }, process.env.JWT) 
+  return jwt.sign({ _id: this._id, name: this.name,  isAdmin: this.isAdmin }, process.env.JWT) 
 }
 
 const User = mongoose.model('User', userSchema)
