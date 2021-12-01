@@ -32,7 +32,7 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-// post request
+// post request ADD new product?
 router.post('/', [auth, admin], async (req, res) => {
   try {
     const { error } = validate(req.body)
