@@ -130,11 +130,26 @@ router.post('/', async (req, res) => {
 }) 
 
 
-// get ALL reqest
+// get ALL users reqest
 router.get('/', async (req, res) => {
   try {
     const users = await User.find()
     return res.send(users)
+  } catch (ex) {
+    return res.status(500).send(`Internal Server Error: ${ex}`)
+  }
+})
+
+// get single user request
+router.get('/:id', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id)
+
+    if (!user) {
+    return res.status(400).send(`The user with id "${req.params.id}" does not exist.`)
+    }
+  
+    return res.send(user)
   } catch (ex) {
     return res.status(500).send(`Internal Server Error: ${ex}`)
   }
