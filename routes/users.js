@@ -3,6 +3,11 @@ const { Product, validate } = require('../models/products')
 const bcrypt = require('bcrypt')
 const express = require('express')
 const router = express.Router()
+const dotenv = require('dotenv')
+const jwt = require('jsonwebtoken');
+
+dotenv.config()
+
 
 // add item to cart
 router.post('./:userId/shoppingcart/:productId', async (req, res) => {
@@ -108,6 +113,17 @@ router.post('/', async (req, res) => {
     })
 
     await user.save()
+
+    const token = jwt.sign(
+      { _id: user._id, name: user.name },
+      // config.get('jwtSecret')
+      process.env.JWT
+      );
+       return res
+       .header('x-auth-token', token)
+       .header('access-control-expose-headers', 'x-auth-token')
+       .send({ _id: user._id, name: user.name, email: user.email });
+
     return res.send({ _id: user._id, name: user.name, email: user.email })
   } catch (ex) {
     return res.status(500).send(`Internal Server Error: ${ex}`)
