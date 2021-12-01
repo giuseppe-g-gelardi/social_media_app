@@ -1,4 +1,6 @@
 const { Product, validate } = require('../models/products')
+const auth = require('../middleware/auth');
+const admin = require('../middleware/admin');
 const express = require('express')
 const router = express.Router()
 
@@ -31,7 +33,7 @@ router.get('/:id', async (req, res) => {
 })
 
 // post request
-router.post('/', async (req, res) => {
+router.post('/', [auth, admin], async (req, res) => {
   try {
     const { error } = validate(req.body)
     if (error) {
