@@ -47,6 +47,7 @@ export default function RegistrationForm () {
     <Container>
       <form onSubmit={handleSubmit}>
         <FormControl>
+
           <TextField
             style={{ marginBottom: 20 }}
             onChange={e => setUserName(e.target.value)}

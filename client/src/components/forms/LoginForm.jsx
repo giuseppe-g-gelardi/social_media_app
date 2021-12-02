@@ -4,7 +4,7 @@ import { FormControl, Container, Button, TextField } from '@material-ui/core'
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
 import { makeStyles } from '@material-ui/core/styles'
 
-import userContext from '../../context/userContext'
+import { AuthContext } from '../../context/AuthContext'
 
 const useStyles = makeStyles({
   field: {
@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 
 export default function LoginForm (props) {
 
-  const { setIsAuth } = useContext(userContext)
+  const { isAuth, setIsAuth } = useContext(AuthContext)
 
   const { setOpenPopup } = props
 
@@ -61,6 +61,8 @@ export default function LoginForm (props) {
   
       <form onSubmit={handleSubmit}>
         <FormControl>
+        <Button onClick={() => console.log(isAuth)}>logger</Button>
+
           <TextField
             style={{ marginBottom: 20 }}
             onChange={e => setUserEmail(e.target.value)}

@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <Container>
       <Container >
-        <h1>Welcome...</h1>
+        <h1>Home page...</h1>
       </Container>
     </Container>
   )
