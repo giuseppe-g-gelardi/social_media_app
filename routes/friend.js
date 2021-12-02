@@ -28,7 +28,9 @@ router.get("/user/friends/:id", async (req, res) => {
 });
 
 
-router.delete("/:id", async (req, res) => {
+
+// delete friend
+router.delete("/user/friends/:id", async (req, res) => {
     try {
       const friend = await Friends.findByIdAndRemove(req.params.id);
       if (!friend)
