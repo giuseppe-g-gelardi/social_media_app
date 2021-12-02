@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
+// import { Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import { lightTheme, darkTheme } from './components/theme/Theme'
 import MainAppbar from './components/MainAppbar';
-import Home from './pages/Home'
-import Landing from './pages/Landing'
-import Error from './pages/Error'
+// import Home from './pages/Home'
+// import Landing from './pages/Landing'
+// import Error from './pages/Error'
+import RegistrationPage from './pages/RegistrationPage';
+import LoginPage from './pages/LoginPage';
 
 
 export default function App() {
@@ -19,11 +21,14 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
         <MainAppbar check={darkMode} change={() => setDarkMode(!darkMode)} />
-          <Routes>
+          <RegistrationPage />
+          <LoginPage />
+
+          {/* <Routes>
             <Route path='/' element={<Landing />} />
             <Route path='/home' element={<Home />} />
             <Route path='*' element={<Error />} />
-          </Routes>
+          </Routes> */}
     </ThemeProvider>
   )
 }

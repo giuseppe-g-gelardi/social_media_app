@@ -5,7 +5,7 @@ const Joi = require("joi");
 
 
 const friendSchema = new mongooseSchema({
-   userI: { type: String },
+   userID: { type: String },
 
 })
 
