@@ -5,11 +5,11 @@ const Joi = require("joi");
 
 
 const friendSchema = new mongooseSchema({
-   userId: { type: String },
-   
+   userI: { type: String },
+
 })
 
+const Friends = mongoose.model("Friends", friendSchema)
 
 
-
-module.exports.friendSchema
+module.exports.friends = Friends;
