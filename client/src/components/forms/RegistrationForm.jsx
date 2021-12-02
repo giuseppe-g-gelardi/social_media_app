@@ -23,19 +23,23 @@ export default function RegistrationForm() {
   const [ userName, setUserName ] = useState('')
   const [ userEmail, setUserEmail ] = useState('')
   const [ userPassword, setUserPassword ] = useState('')
+  const [ newUser, setNewUser ] = useState({})
   const classes = useStyles()
 
   const api = `http://localhost:8000/api/users/`
 
   const handleSubmit = async e => {
     e.preventDefault()
-    let user = {
-      name: userName,
-      email: userEmail,
-      password: userPassword
-    }
+    setNewUser({
+      "name": userName,
+      "email": userEmail,
+      "password": userPassword
+    })
+  
     try { 
-      await axios.post(api, user)
+      await axios.post(api, newUser).then(response => {
+        console.log(response)
+      })
     } catch (error) {
       console.log(error)
     }
@@ -44,7 +48,7 @@ export default function RegistrationForm() {
   return (
     <Container>
 
-      <FormControl noValidate autoComplete='off' onSubmit={handleSubmit}>
+      <FormControl onSubmit={handleSubmit}>
 
         <TextField 
           style={{marginBottom: 20}}
