@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import axios from 'axios'
 import { FormControl, Container, Button, TextField } from '@material-ui/core'
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
 import { makeStyles } from '@material-ui/core/styles'
+
+import userContext from '../../context/userContext'
 
 const useStyles = makeStyles({
   field: {
@@ -18,11 +20,18 @@ const useStyles = makeStyles({
   }
 })
 
-export default function LoginForm () {
+export default function LoginForm (props) {
+
+  const { setIsAuth } = useContext(userContext)
+
+  const { setOpenPopup } = props
+
   const [userEmail, setUserEmail] = useState('')
   const [userPassword, setUserPassword] = useState('')
-  const classes = useStyles()
   const [userToken, setUserToken] = useState('')
+
+  const classes = useStyles()
+
 
   const api = `http://localhost:8000/api/auth`
 
@@ -36,9 +45,11 @@ export default function LoginForm () {
     axios
       .post(api, user)
       .then(response => {
-        console.log(response.data)
+        // console.log(response.data)
         setUserToken(response.data)
         localStorage.setItem('token', userToken)
+        setIsAuth(true)
+        setOpenPopup(false)
       })
       .catch(error => {
         console.log(`Axios error: `, error)
@@ -47,6 +58,7 @@ export default function LoginForm () {
 
   return (
     <Container>
+  
       <form onSubmit={handleSubmit}>
         <FormControl>
           <TextField

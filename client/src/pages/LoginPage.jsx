@@ -22,7 +22,7 @@ export default function LoginPage() {
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
       >
-        <LoginForm />
+        <LoginForm setOpenPopup={setOpenPopup} />
       </Controls.Popup>
       
     </Container>
