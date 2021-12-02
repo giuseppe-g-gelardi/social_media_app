@@ -73,6 +73,7 @@ export default function RegistrationForm () {
             className={classes.field}
             label='Enter a password'
             variant='outlined'
+            type='password'
             fullWidth
             required
           />
