@@ -1,6 +1,10 @@
-const Logout = () => {
+import { useNavigate } from "react-router-dom"
+
+const Logout = (e) => {
+  e.preventDefault()
+  const navigate = useNavigate
   localStorage.removeItem('token')
-  window.location.reload()
+  navigate('/')
 }
 
 export default Logout
