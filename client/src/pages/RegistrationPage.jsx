@@ -18,7 +18,7 @@ export default function RegistrationPage(props) {
       </Button>
 
       <Controls.Popup
-        title='Register Account'
+        text='Register Account'
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
       >

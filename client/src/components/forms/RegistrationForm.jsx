@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     marginTop: 10,
     marginBottom: 10,
     display: 'block',
-    // color: '#bd93f9',
+    color: '#bd93f9',
   },
 })
 
