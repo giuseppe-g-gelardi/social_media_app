@@ -9,6 +9,7 @@ import MainAppbar from './components/MainAppbar';
 // import Landing from './pages/Landing'
 // import Error from './pages/Error'
 import RegistrationPage from './pages/RegistrationPage';
+import LoginPage from './pages/LoginPage';
 
 
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
       <CssBaseline />
         <MainAppbar check={darkMode} change={() => setDarkMode(!darkMode)} />
           <RegistrationPage />
+          <LoginPage />
 
           {/* <Routes>
             <Route path='/' element={<Landing />} />
