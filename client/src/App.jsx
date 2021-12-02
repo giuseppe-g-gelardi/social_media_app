@@ -8,8 +8,8 @@ import MainAppbar from './components/MainAppbar'
 import Home from './pages/Home'
 import Landing from './pages/Landing'
 import Error from './pages/Error'
-import RegistrationPage from './pages/RegistrationPage'
-import LoginPage from './pages/LoginPage'
+// import RegistrationPage from './pages/RegistrationPage'
+// import LoginPage from './pages/LoginPage'
 
 // import UserState from './context/UserState'
 // import userContext from './context/userContext'
@@ -28,9 +28,17 @@ export default function App () {
 
       <MainAppbar check={darkMode} change={() => setDarkMode(!darkMode)} />
       <button onClick={() => console.log(isAuth)}>logger</button>
-      <RegistrationPage />
-      <LoginPage />
+      {/* <RegistrationPage />
+      <LoginPage /> */}
       <Routes>
+
+        {/* <Route 
+          path='/'
+          element={
+            !isAuth ? <Landing /> : <Home />
+          }
+        
+        /> */}
         <Route path='/' element={<Landing />} />
         <Route path='/home' element={<Home />} />
         <Route path='*' element={<Error />} />
