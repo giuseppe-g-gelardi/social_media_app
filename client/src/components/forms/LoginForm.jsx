@@ -22,6 +22,7 @@ export default function LoginForm () {
   const [userEmail, setUserEmail] = useState('')
   const [userPassword, setUserPassword] = useState('')
   const classes = useStyles()
+  const [userToken, setUserToken] = useState('')
 
   const api = `http://localhost:8000/api/auth`
 
@@ -35,7 +36,9 @@ export default function LoginForm () {
     axios
       .post(api, user)
       .then(response => {
-        console.log(response)
+        console.log(response.data)
+        setUserToken(response.data)
+        localStorage.setItem('token', userToken)
       })
       .catch(error => {
         console.log(`Axios error: `, error)
