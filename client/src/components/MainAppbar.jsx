@@ -7,7 +7,10 @@ import { makeStyles } from '@material-ui/core'
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Slide from '@mui/material/Slide';
 
+import { Link } from 'react-router-dom'
+
 import Controls from './controls/Controls'
+import Logout from './Logout'
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -57,7 +60,15 @@ export default function MainAppBar(props) {
               ello gov'na
             </Typography>
             
-
+              <Link
+                to='/'
+                style={{ textDecoration: 'none' }}
+                onClick={() => {
+                  Logout()
+                }}
+              >
+                Logout
+              </Link>
             <Controls.MuiSwitch onChange={change} checked={check} />
           </Toolbar>
         </AppBar>
