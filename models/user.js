@@ -15,7 +15,8 @@ const userSchema = new mongoose.Schema({
   isAdmin: { type: Boolean, default: false },
   friendsList: { type: Array, default: []},
   privateMessages: { type: Array, default: [] },
-  friendRequests: { type: Array, default: [] }    
+  friendRequests: { type: Array, default: [] },
+  posts: { type: Array, default: [] }    
 })
 
 userSchema.methods.generateAuthToken = () => {
