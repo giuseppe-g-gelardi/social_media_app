@@ -41,7 +41,6 @@ export default function LoginForm (props) {
       .then(response => {
         console.log(response.data)
         localStorage.setItem('token', response.data)
-        
         setOpenPopup(false)
         navigate('/home')
       })
