@@ -7,10 +7,9 @@ import { makeStyles } from '@material-ui/core'
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Slide from '@mui/material/Slide';
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import Controls from './controls/Controls'
-import Logout from './Logout'
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -36,6 +35,12 @@ export default function MainAppBar(props) {
 
   const { children, check, change } = props
   const classes = useStyles()
+  const navigate = useNavigate
+
+  function logout() {
+    localStorage.removeItem('token')
+    navigate('/')
+  }
 
   function HideOnScroll(props) {
     const { children, window } = props;
@@ -43,6 +48,9 @@ export default function MainAppBar(props) {
     const trigger = useScrollTrigger({
       target: window ? window() : undefined,
     });
+
+    
+    
   
     return (
       <Slide appear={false} direction="down" in={!trigger}>
@@ -63,9 +71,7 @@ export default function MainAppBar(props) {
               <Link
                 to='/'
                 style={{ textDecoration: 'none' }}
-                onClick={() => {
-                  Logout()
-                }}
+                onClick={() => logout()}
               >
                 Logout
               </Link>

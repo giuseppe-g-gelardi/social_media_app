@@ -22,7 +22,7 @@ export default function RegistrationPage() {
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
       >
-        <RegistrationForm />
+        <RegistrationForm setOpenPopup={setOpenPopup} />
       </Controls.Popup>
       
     </Container>

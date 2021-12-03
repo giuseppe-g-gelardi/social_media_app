@@ -3,6 +3,7 @@ import axios from 'axios'
 import { FormControl, Container, Button, TextField } from '@material-ui/core'
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
 import { makeStyles } from '@material-ui/core/styles'
+// import jwtDecode from 'jwt-decode'
 
 const useStyles = makeStyles({
   field: {
@@ -18,7 +19,12 @@ const useStyles = makeStyles({
   }
 })
 
-export default function RegistrationForm () {
+export default function RegistrationForm (props) {
+
+  const { setOpenPopup } = props
+
+  // const [newUser, setNewUser] = useState({})
+  // const [user, setUser] = useState({})
   const [userName, setUserName] = useState('')
   const [userEmail, setUserEmail] = useState('')
   const [userPassword, setUserPassword] = useState('')
@@ -36,7 +42,9 @@ export default function RegistrationForm () {
     axios
       .post(api, user)
       .then(response => {
-        console.log(response)
+        localStorage.setItem('token', response.headers['x-auth-token'])
+        setOpenPopup(false)
+        // const user = jwtDecode(localStorage.getItem('token'))
       })
       .catch(error => {
         console.log(`Axios error: `, error)
