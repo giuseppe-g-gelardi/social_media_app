@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import axios from 'axios'
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { FormControl, Container, Button, TextField } from '@material-ui/core'
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
 import { makeStyles } from '@material-ui/core/styles'
@@ -31,7 +31,7 @@ export default function LoginForm (props) {
   const [userPassword, setUserPassword] = useState('')
   const [userToken, setUserToken] = useState('')
 
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const classes = useStyles()
 
@@ -53,7 +53,7 @@ export default function LoginForm (props) {
         localStorage.setItem('token', userToken)
         setIsAuth(true)
         setOpenPopup(false)
-        // navigate('/home')
+        navigate('/home')
       })
       .catch(error => {
         console.log(`Axios error: `, error)

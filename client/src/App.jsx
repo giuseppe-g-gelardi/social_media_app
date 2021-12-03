@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import React, { useState, useContext, useEffect } from 'react'
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import { ThemeProvider } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
 
@@ -11,16 +11,27 @@ import Error from './pages/Error'
 // import RegistrationPage from './pages/RegistrationPage'
 // import LoginPage from './pages/LoginPage'
 
-// import UserState from './context/UserState'
-// import userContext from './context/userContext'
-
 import { AuthContext } from './context/AuthContext'
 
 export default function App () {
   const [darkMode, setDarkMode] = useState(false)
   const theme = darkMode ? darkTheme : lightTheme
+  const { isAuth, setIsAuth } = useContext(AuthContext)
 
-  const { isAuth } = useContext(AuthContext)
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    return token ? setIsAuth(true) : setIsAuth(false)
+  })
+
+  const PrivateRoute = ({ children }) => {
+  let location = useLocation()
+
+    if (!isAuth) {
+      return <Navigate to='/' state={{ from: location }} />
+    }
+    return children
+  }
+  
 
   return (
     <ThemeProvider theme={theme}>
@@ -28,19 +39,17 @@ export default function App () {
 
       <MainAppbar check={darkMode} change={() => setDarkMode(!darkMode)} />
       <button onClick={() => console.log(isAuth)}>logger</button>
-      {/* <RegistrationPage />
-      <LoginPage /> */}
+   
       <Routes>
-
-        {/* <Route 
-          path='/'
+        <Route 
+          path='/home' 
           element={
-            !isAuth ? <Landing /> : <Home />
+            <PrivateRoute>
+              <Home />
+            </PrivateRoute>
           }
-        
-        /> */}
+        />
         <Route path='/' element={<Landing />} />
-        <Route path='/home' element={<Home />} />
         <Route path='*' element={<Error />} />
       </Routes>
     </ThemeProvider>
