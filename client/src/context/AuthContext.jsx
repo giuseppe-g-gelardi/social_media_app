@@ -14,7 +14,7 @@ export const AuthProvider = (props) => {
         setIsAuth
       }}
     >
-      {children }
+      {children}
     </AuthContext.Provider>
   )
 }

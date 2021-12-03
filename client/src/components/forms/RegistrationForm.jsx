@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import axios from 'axios'
 import { FormControl, Container, Button, TextField } from '@material-ui/core'
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
 import { makeStyles } from '@material-ui/core/styles'
 // import jwtDecode from 'jwt-decode'
+
+import { AuthContext } from '../../context/AuthContext'
+
 
 const useStyles = makeStyles({
   field: {
@@ -22,6 +25,9 @@ const useStyles = makeStyles({
 export default function RegistrationForm (props) {
 
   const { setOpenPopup } = props
+
+  const { isAuth, setIsAuth } = useContext(AuthContext)
+
 
   // const [newUser, setNewUser] = useState({})
   // const [user, setUser] = useState({})
@@ -43,6 +49,7 @@ export default function RegistrationForm (props) {
       .post(api, user)
       .then(response => {
         localStorage.setItem('token', response.headers['x-auth-token'])
+        setIsAuth(true)
         setOpenPopup(false)
         // const user = jwtDecode(localStorage.getItem('token'))
       })
@@ -55,6 +62,7 @@ export default function RegistrationForm (props) {
     <Container>
       <form onSubmit={handleSubmit}>
         <FormControl>
+        <Button onClick={() => console.log(isAuth)}>logger</Button>
 
           <TextField
             style={{ marginBottom: 20 }}
