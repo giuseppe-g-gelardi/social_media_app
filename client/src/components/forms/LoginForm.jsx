@@ -1,11 +1,9 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { FormControl, Container, Button, TextField } from '@material-ui/core'
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
 import { makeStyles } from '@material-ui/core/styles'
-
-import { AuthContext } from '../../context/AuthContext'
 
 const useStyles = makeStyles({
   field: {
@@ -23,18 +21,11 @@ const useStyles = makeStyles({
 
 export default function LoginForm (props) {
 
-  const { isAuth, setIsAuth } = useContext(AuthContext)
-
   const { setOpenPopup } = props
-
   const [userEmail, setUserEmail] = useState('')
   const [userPassword, setUserPassword] = useState('')
-  const [userToken, setUserToken] = useState('')
-
-  // const navigate = useNavigate()
-
+  const navigate = useNavigate()
   const classes = useStyles()
-
 
   const api = `http://localhost:8000/api/auth`
 
@@ -48,12 +39,10 @@ export default function LoginForm (props) {
     axios
       .post(api, user)
       .then(response => {
-        // console.log(response.data)
-        setUserToken(response.data)
-        localStorage.setItem('token', userToken)
-        setIsAuth(true)
+        console.log(response.data)
+        localStorage.setItem('token', response.data)
         setOpenPopup(false)
-        // navigate('/home')
+        navigate('/home')
       })
       .catch(error => {
         console.log(`Axios error: `, error)
@@ -65,7 +54,6 @@ export default function LoginForm (props) {
   
       <form onSubmit={handleSubmit}>
         <FormControl>
-        <Button onClick={() => console.log(isAuth)}>logger</Button>
 
           <TextField
             style={{ marginBottom: 20 }}

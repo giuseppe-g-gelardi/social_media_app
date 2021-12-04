@@ -1,26 +1,72 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-const dateAndTime = require("date-and-time");
-const date = new Date();
 
-const messageShema = Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "users",
+const MessageSchema = new mongoose.Schema(
+  {
+    from: {
+      type: String,
+      required: true,
+    },
+    to: {
+      type: String,
+      required: true,
+    },
+    body: {
+      type: String,
+      required: true,
+    },
   },
-  text: {
-    type: String,
-    required: true,
-  },
-  date: {
-    type: String,
-    default: dateAndTime.format(date, "hh:mm:ss A, MM-DD-YYYY"),
-  },
-});
+  {
+    timestamps: true,
+  }
+);
 
-module.exports = mongoose.model("message", messageShema);
+const Message = mongoose.model("Message", MessageSchema);
+
+module.exports = Message;
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const mongoose = require("mongoose");
+// const Schema = mongoose.Schema;
+// const dateAndTime = require("date-and-time");
+// const date = new Date();
+
+// const messageShema = Schema({
+//   user: {
+//     type: mongoose.Schema.Types.ObjectId,
+//     ref: "users",
+//   },
+//   text: {
+//     type: String,
+//     required: true,
+//   },
+//   date: {
+//     type: String,
+//     default: dateAndTime.format(date, "hh:mm:ss A, MM-DD-YYYY"),
+//   },
+// });
+
+// module.exports = mongoose.model("message", messageShema);
 
 
 ////
