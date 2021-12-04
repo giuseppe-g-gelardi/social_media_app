@@ -41,7 +41,7 @@ export default function App () {
     <ThemeProvider theme={theme}>
       <CssBaseline />
 
-      <MainAppbar check={darkMode} change={() => setDarkMode(!darkMode)} />
+      <MainAppbar check={darkMode} change={() => setDarkMode(!darkMode)} isAuth={isAuth} setIsAuth={setIsAuth} />
       <button onClick={() => console.log(isAuth)}>logger</button>
       <Routes>
 
@@ -57,7 +57,6 @@ export default function App () {
         />
 
         <Route path='*' element={<Error />} />
-
 
       </Routes>
     </ThemeProvider>

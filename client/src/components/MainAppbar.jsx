@@ -33,7 +33,8 @@ const useStyles = makeStyles((theme) => {
 
 export default function MainAppBar(props) {
 
-  const { children, check, change } = props
+  const { children, check, change, isAuth } = props
+
   const classes = useStyles()
   const navigate = useNavigate
 
@@ -49,15 +50,23 @@ export default function MainAppBar(props) {
       target: window ? window() : undefined,
     });
 
-    
-    
-  
     return (
       <Slide appear={false} direction="down" in={!trigger}>
         {children}
       </Slide>
     );
   }
+
+  let authMenu = (
+    <Link
+      to='/'
+      style={{ textDecoration: 'none' }}
+      onClick={() => logout()}
+    >
+      Logout
+    </Link>
+  )
+  
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -67,14 +76,9 @@ export default function MainAppBar(props) {
             <Typography variant="h5" component="div" sx={{flexGrow: 1}}>
               ello gov'na
             </Typography>
-            
-              <Link
-                to='/'
-                style={{ textDecoration: 'none' }}
-                onClick={() => logout()}
-              >
-                Logout
-              </Link>
+
+              {isAuth ? authMenu : 'plz login'}
+
             <Controls.MuiSwitch onChange={change} checked={check} />
           </Toolbar>
         </AppBar>
