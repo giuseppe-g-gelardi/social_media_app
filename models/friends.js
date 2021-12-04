@@ -12,4 +12,16 @@ const friendSchema = new mongooseSchema({
 const Friends = mongoose.model("Friends", friendSchema)
 
 
+function validateFriends(Friends) {
+   const schema = Joi.object({
+     userID: Joi.string().required(),
+    
+   })
+   return schema.validate(Friends)
+ }
+
+
+
+
 module.exports.friends = Friends;
+module.exports.validateFriends = validateFriends;
