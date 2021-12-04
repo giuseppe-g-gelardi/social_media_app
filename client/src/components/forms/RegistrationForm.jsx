@@ -29,6 +29,10 @@ export default function RegistrationForm (props) {
   const classes = useStyles()
   const api = `http://localhost:8000/api/users/`
 
+  const refreshPage = () => {
+    window.location.reload()
+  }
+
   const handleSubmit = async e => {
     e.preventDefault()
 
@@ -42,6 +46,7 @@ export default function RegistrationForm (props) {
       .then(response => {
         localStorage.setItem('token', response.headers['x-auth-token'])
         setOpenPopup(false)
+        refreshPage()
         navigate('/home')
       })
       .catch(error => {

@@ -29,6 +29,10 @@ export default function LoginForm (props) {
 
   const api = `http://localhost:8000/api/auth`
 
+  const refreshPage = () => {
+    window.location.reload()
+  }
+
   const handleSubmit = async e => {
     e.preventDefault()
 
@@ -42,6 +46,7 @@ export default function LoginForm (props) {
         console.log(response.data)
         localStorage.setItem('token', response.data)
         setOpenPopup(false)
+        refreshPage()
         navigate('/home')
       })
       .catch(error => {
