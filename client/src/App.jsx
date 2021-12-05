@@ -3,8 +3,8 @@ import { Routes, Route } from 'react-router-dom'
 // import { Routes, Route, useLocation, Navigate, useNavigate } from 'react-router-dom'
 import { ThemeProvider } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import axios from 'axios'
-import jwtDecode from 'jwt-decode'
+// import axios from 'axios'
+// import jwtDecode from 'jwt-decode'
 
 import { lightTheme, darkTheme } from './components/theme/Theme'
 import MainAppbar from './components/MainAppbar'
@@ -16,7 +16,7 @@ import Error from './pages/Error'
 
 export default function App () {
 
-  const [user, setUser] = useState({})
+  // const [user, setUser] = useState({})
   const [darkMode, setDarkMode] = useState(false)
   const [isAuth, setIsAuth] = useState(false)
   const theme = darkMode ? darkTheme : lightTheme
@@ -31,35 +31,7 @@ export default function App () {
     checkAuth()
   }, [isAuth])
 
-  useEffect(() => {
-    getUserFromToken()
-  }, [])
 
-  const getUserFromToken = () => {
-    const token = localStorage.getItem('token')
-
-    if (token) {
-      try {
-        const userid = jwtDecode(localStorage.getItem('token'))._id
- 
-        axios
-          .get(`http://localhost:8000/api/users/${userid}`, {
-            headers: { 'x-auth-token': token }
-          })
-          .then(response => {
-            console.log(response.data)
-            setUser(response.data)
-          })
-          .catch(error => {
-            console.log(`Axios error: `, error)
-          })
-      } catch (err) {
-        console.log(err)
-      }
-    } else {
-      return;
-    }
-  }
 
   return (
       <ThemeProvider theme={theme}>
@@ -73,7 +45,7 @@ export default function App () {
         />
         <Routes>
           <Route path='/' element={<Landing />} />
-          <Route path='/home' element={<Home user={user} />} />
+          <Route path='/home' element={<Home />} />
           <Route path='*' element={<Error />} />
         </Routes>
       </ThemeProvider>
@@ -104,4 +76,35 @@ export default function App () {
 
   // function RequireAuth() {
   //   return isAuth ? children : <Navigate to='/' />
+  // }
+
+
+    // useEffect(() => {
+  //   getUserFromToken()
+  // }, [])
+
+  // const getUserFromToken = () => {
+  //   const token = localStorage.getItem('token')
+
+  //   if (token) {
+  //     try {
+  //       const userid = jwtDecode(localStorage.getItem('token'))._id
+ 
+  //       axios
+  //         .get(`http://localhost:8000/api/users/${userid}`, {
+  //           headers: { 'x-auth-token': token }
+  //         })
+  //         .then(response => {
+  //           console.log(response.data)
+  //           setUser(response.data)
+  //         })
+  //         .catch(error => {
+  //           console.log(`Axios error: `, error)
+  //         })
+  //     } catch (err) {
+  //       console.log(err)
+  //     }
+  //   } else {
+  //     return;
+  //   }
   // }
