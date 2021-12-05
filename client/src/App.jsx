@@ -12,10 +12,15 @@ import Home from './pages/Home'
 import Landing from './pages/Landing'
 import Error from './pages/Error'
 
+
+
 export default function App () {
+
+  const [user, setUser] = useState({})
   const [darkMode, setDarkMode] = useState(false)
   const [isAuth, setIsAuth] = useState(false)
   const theme = darkMode ? darkTheme : lightTheme
+
 
   const checkAuth = () => {
     const token = localStorage.getItem('token')
@@ -35,15 +40,15 @@ export default function App () {
 
     if (token) {
       try {
-        const decodedToken = jwtDecode(token)
-        const userid = decodedToken._id
-
+        const userid = jwtDecode(localStorage.getItem('token'))._id
+ 
         axios
           .get(`http://localhost:8000/api/users/${userid}`, {
             headers: { 'x-auth-token': token }
           })
           .then(response => {
             console.log(response.data)
+            setUser(response.data)
           })
           .catch(error => {
             console.log(`Axios error: `, error)
@@ -57,22 +62,21 @@ export default function App () {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
 
-      <MainAppbar
-        check={darkMode}
-        change={() => setDarkMode(!darkMode)}
-        isAuth={isAuth}
-        setIsAuth={setIsAuth}
-      />
-
-      <Routes>
-        <Route path='/' element={<Landing />} />
-        <Route path='/home' element={<Home />} />
-        <Route path='*' element={<Error />} />
-      </Routes>
-    </ThemeProvider>
+        <MainAppbar
+          check={darkMode}
+          change={() => setDarkMode(!darkMode)}
+          isAuth={isAuth}
+          setIsAuth={setIsAuth}
+        />
+        <Routes>
+          <Route path='/' element={<Landing />} />
+          <Route path='/home' element={<Home user={user} />} />
+          <Route path='*' element={<Error />} />
+        </Routes>
+      </ThemeProvider>
   )
 }
 
