@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import { FormControl, Container, Button, TextField } from '@material-ui/core'
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
 import { makeStyles } from '@material-ui/core/styles'
-// import jwtDecode from 'jwt-decode'
 
 const useStyles = makeStyles({
   field: {
@@ -25,7 +24,6 @@ export default function LoginForm (props) {
   const { setOpenPopup } = props
   const [userEmail, setUserEmail] = useState('')
   const [userPassword, setUserPassword] = useState('')
-  // const [user, setUser] = useState()
   const navigate = useNavigate()
   const classes = useStyles()
 
