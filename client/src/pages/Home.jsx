@@ -17,7 +17,6 @@ export default function Home() {
     const token = localStorage.getItem('token')
 
     if (token) {
-      try {
         const userid = jwtDecode(localStorage.getItem('token'))._id
  
         axios
@@ -31,9 +30,6 @@ export default function Home() {
           .catch(error => {
             console.log(`Axios error: `, error)
           })
-      } catch (err) {
-        console.log(err)
-      }
     } else {
       return;
     }
