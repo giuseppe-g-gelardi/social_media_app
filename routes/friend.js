@@ -3,11 +3,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
 
-
-
-
-
-
+// get all friends
 router.get("/userID/Friends", async (req, res) => {
   try {
     const friend = await Friends.find();
@@ -17,8 +13,7 @@ router.get("/userID/Friends", async (req, res) => {
   }
 });
 
-
-
+// get single friend
 router.get("/:userID/Friends/:id", async (req, res) => {
   try {
     const friend = await Friends.findById(req.params.id);
@@ -29,7 +24,5 @@ router.get("/:userID/Friends/:id", async (req, res) => {
     return res.status(500).send(`Internal Server Error: ${ex}`);
   }
 });
-
-
 
 module.exports = router
