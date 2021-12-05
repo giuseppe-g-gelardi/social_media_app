@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 // import { Routes, Route, useLocation, Navigate, useNavigate } from 'react-router-dom'
 import { ThemeProvider } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -16,22 +16,21 @@ import Error from './pages/Error'
 
 export default function App () {
 
-  // const [user, setUser] = useState({})
   const [darkMode, setDarkMode] = useState(false)
   const [isAuth, setIsAuth] = useState(false)
   const theme = darkMode ? darkTheme : lightTheme
 
+  const navigate = useNavigate()
 
   const checkAuth = () => {
     const token = localStorage.getItem('token')
     setIsAuth(token !== null)
+    return isAuth ? navigate('/home') : navigate('/')
   }
 
   useEffect(() => {
     checkAuth()
   }, [isAuth])
-
-
 
   return (
       <ThemeProvider theme={theme}>

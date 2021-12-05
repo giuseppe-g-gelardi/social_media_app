@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { FormControl, Container, Button, TextField } from '@material-ui/core'
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
@@ -25,7 +25,7 @@ export default function RegistrationForm (props) {
   const [userName, setUserName] = useState('')
   const [userEmail, setUserEmail] = useState('')
   const [userPassword, setUserPassword] = useState('')
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const classes = useStyles()
   const api = `http://localhost:8000/api/users/register`
 
@@ -48,7 +48,7 @@ export default function RegistrationForm (props) {
         localStorage.setItem('token', response.headers['x-auth-token'])
         setOpenPopup(false)
         refreshPage()
-        navigate('/home')
+        // navigate('/home')
       })
       .catch(error => {
         console.log(`Axios error: `, error)
