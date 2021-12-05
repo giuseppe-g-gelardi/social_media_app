@@ -27,6 +27,10 @@ export default function App () {
     checkAuth()
   }, [isAuth])
 
+  useEffect(() => {
+    getUserFromToken()
+  }, [])
+
   // function RequireAuth(props) {
   //   const { children } = props
   //   const navigate = useNavigate()
@@ -40,14 +44,15 @@ export default function App () {
   //     />
   // }
 
-  const getUserFromToken = async () => {
+  const getUserFromToken = () => {
     const token = localStorage.getItem('token')
-    const decodedToken = jwtDecode(token)
-    const userid = decodedToken._id
 
     if (token) {
       try {
-        await axios
+        const decodedToken = jwtDecode(token)
+        const userid = decodedToken._id
+
+        axios
           .get(`http://localhost:8000/api/users/${userid}`, {
             headers: { 'x-auth-token': token }
           })
@@ -60,12 +65,10 @@ export default function App () {
       } catch (err) {
         console.log(err)
       }
+    } else {
+      return;
     }
   }
-
-  // useEffect(() => {
-  //   getUserFromToken()
-  // }, [])
 
   return (
     <ThemeProvider theme={theme}>
@@ -112,3 +115,26 @@ export default function App () {
 //     <Route path='/home' element={<Home />} />
 //   </>
 // )}
+
+// const getUserFromToken = async () => {
+//   const token = localStorage.getItem('token')
+//   const decodedToken = jwtDecode(token)
+//   const userid = decodedToken._id
+
+//   if (token) {
+//     try {
+//       await axios
+//         .get(`http://localhost:8000/api/users/${userid}`, {
+//           headers: { 'x-auth-token': token }
+//         })
+//         .then(response => {
+//           console.log(response.data)
+//         })
+//         .catch(error => {
+//           console.log(`Axios error: `, error)
+//         })
+//     } catch (err) {
+//       console.log(err)
+//     }
+//   }
+// }
