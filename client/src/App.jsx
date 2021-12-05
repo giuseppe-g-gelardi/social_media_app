@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
-// import { Routes, Route, useLocation, Navigate } from 'react-router-dom'
+// import { Routes, Route, useLocation, Navigate, useNavigate } from 'react-router-dom'
 import { ThemeProvider } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import axios from 'axios'
@@ -16,7 +16,6 @@ export default function App () {
   const [darkMode, setDarkMode] = useState(false)
   const [isAuth, setIsAuth] = useState(false)
   const theme = darkMode ? darkTheme : lightTheme
-  // const location = useLocation()
 
   const checkAuth = () => {
     const token = localStorage.getItem('token')
@@ -30,19 +29,6 @@ export default function App () {
   useEffect(() => {
     getUserFromToken()
   }, [])
-
-  // function RequireAuth(props) {
-  //   const { children } = props
-  //   const navigate = useNavigate()
-
-  //   return isAuth ? children :
-  // navigate('/')
-  //     <Navigate
-  //       to='/'
-  //       // replace
-  //       // state={{ path: location.pathname }}
-  //     />
-  // }
 
   const getUserFromToken = () => {
     const token = localStorage.getItem('token')
@@ -80,30 +66,17 @@ export default function App () {
         isAuth={isAuth}
         setIsAuth={setIsAuth}
       />
-      <button onClick={() => console.log(isAuth)}>logger</button>
-      <button onClick={() => getUserFromToken()}>getUserFromToken</button>
 
       <Routes>
         <Route path='/' element={<Landing />} />
-
-        <Route
-          path='/home'
-          element={
-            // <RequireAuth>
-            <Home />
-            // </RequireAuth>
-          }
-        />
-
+        <Route path='/home' element={<Home />} />
         <Route path='*' element={<Error />} />
       </Routes>
     </ThemeProvider>
   )
 }
 
-// <Route path='/' element={<Landing />} />
-// <Route path='/home' element={<Home />} />
-// <Route path='*' element={<Error />} />
+
 
 // {!isAuth && (
 //   <>
@@ -116,25 +89,15 @@ export default function App () {
 //   </>
 // )}
 
-// const getUserFromToken = async () => {
-//   const token = localStorage.getItem('token')
-//   const decodedToken = jwtDecode(token)
-//   const userid = decodedToken._id
-
-//   if (token) {
-//     try {
-//       await axios
-//         .get(`http://localhost:8000/api/users/${userid}`, {
-//           headers: { 'x-auth-token': token }
-//         })
-//         .then(response => {
-//           console.log(response.data)
-//         })
-//         .catch(error => {
-//           console.log(`Axios error: `, error)
-//         })
-//     } catch (err) {
-//       console.log(err)
-//     }
-//   }
+// {/* <Route
+// path='/home'
+// element={
+//   <RequireAuth>
+//     <Home />
+//   </RequireAuth>
 // }
+// /> */}
+
+  // function RequireAuth() {
+  //   return isAuth ? children : <Navigate to='/' />
+  // }
