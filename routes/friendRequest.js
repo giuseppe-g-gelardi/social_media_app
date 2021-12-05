@@ -2,6 +2,11 @@ const {FriendRequest, validateFriendRequest} = require("../models/friendRequests
 const express = require("express");
 const router = express.Router();
 
+
+
+
+
+
 router.post("/api/:userID/sendReq", auth, async (req, res) => {
     try {
       const temp = await Friends.findById({
