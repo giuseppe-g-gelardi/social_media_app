@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { FormControl, Container, Button, TextField } from '@material-ui/core'
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
 import { makeStyles } from '@material-ui/core/styles'
+// import jwtDecode from 'jwt-decode'
 
 const useStyles = makeStyles({
   field: {
@@ -24,10 +25,11 @@ export default function LoginForm (props) {
   const { setOpenPopup } = props
   const [userEmail, setUserEmail] = useState('')
   const [userPassword, setUserPassword] = useState('')
+  // const [user, setUser] = useState()
   const navigate = useNavigate()
   const classes = useStyles()
 
-  const api = `http://localhost:8000/api/auth`
+  const api = `http://localhost:8000/api/auth/login`
 
   const refreshPage = () => {
     window.location.reload()
@@ -43,6 +45,7 @@ export default function LoginForm (props) {
     axios
       .post(api, user)
       .then(response => {
+        console.log(response)
         console.log(response.data)
         localStorage.setItem('token', response.data)
         setOpenPopup(false)

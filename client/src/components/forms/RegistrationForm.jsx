@@ -27,7 +27,7 @@ export default function RegistrationForm (props) {
   const [userPassword, setUserPassword] = useState('')
   const navigate = useNavigate()
   const classes = useStyles()
-  const api = `http://localhost:8000/api/users/`
+  const api = `http://localhost:8000/api/users/register`
 
   const refreshPage = () => {
     window.location.reload()
@@ -44,6 +44,7 @@ export default function RegistrationForm (props) {
     axios
       .post(api, user)
       .then(response => {
+        console.log(response)
         localStorage.setItem('token', response.headers['x-auth-token'])
         setOpenPopup(false)
         refreshPage()

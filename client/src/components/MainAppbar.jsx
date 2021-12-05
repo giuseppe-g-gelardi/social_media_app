@@ -6,7 +6,6 @@ import Typography from '@mui/material/Typography';
 import { makeStyles } from '@material-ui/core'
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Slide from '@mui/material/Slide';
-
 import { Link, useNavigate } from 'react-router-dom'
 
 import Controls from './controls/Controls'

@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
   posts: { type: Array, default: [] }    
 })
 
-userSchema.methods.generateAuthToken = () => {
+userSchema.methods.generateAuthToken = function() {
   return jwt.sign({ _id: this._id, name: this.name,  isAdmin: this.isAdmin }, process.env.JWT) 
 }
 

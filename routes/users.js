@@ -98,7 +98,7 @@ router.delete('./:userId/shoppingcart/:productId',  auth, async (req, res) => {
 // start jwt tutorial
 
 // ! add new user
-router.post('/', async (req, res) => {
+router.post('/register', async (req, res) => {
   try {
     const { error } = validateUser(req.body)
 
