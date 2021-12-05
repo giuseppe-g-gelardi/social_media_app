@@ -8,6 +8,7 @@ const jwt = require('jsonwebtoken');
 
 dotenv.config()
 
+
 router.post("/login", async (req, res) => {
   try {
     const { error } = validateLogin(req.body);
@@ -26,6 +27,7 @@ router.post("/login", async (req, res) => {
     return res.status(500).send(`Internal Server Error: ${ex}`);
   }
 });
+
 
 function validateLogin(req) {
   const schema = Joi.object({

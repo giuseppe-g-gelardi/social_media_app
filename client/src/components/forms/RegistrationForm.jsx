@@ -41,7 +41,7 @@ export default function RegistrationForm (props) {
       email: userEmail,
       password: userPassword
     }
-    axios
+    await axios
       .post(api, user)
       .then(response => {
         console.log(response)
