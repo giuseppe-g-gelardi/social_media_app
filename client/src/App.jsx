@@ -20,15 +20,15 @@ export default function App () {
 
   // const navigate = useNavigate()
 
-  // const checkAuth = () => {
-  //   const token = localStorage.getItem('token')
-  //   setIsAuth(token !== null)
-  //   return isAuth ? navigate('/home') : navigate('/')
-  // }
+  const checkAuth = () => {
+    const token = localStorage.getItem('token')
+    setIsAuth(token !== null)
+    // return isAuth ? navigate('/home') : navigate('/')
+  }
 
-  // useEffect(() => {
-  //   checkAuth()
-  // }, [isAuth])
+  useEffect(() => {
+    checkAuth()
+  }, [isAuth])
 
   return (
     <UserProvider>
