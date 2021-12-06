@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
-// import { Routes, Route, useLocation, Navigate, useNavigate } from 'react-router-dom'
 import { ThemeProvider } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
-// import axios from 'axios'
-// import jwtDecode from 'jwt-decode'
 
 import { lightTheme, darkTheme } from './components/theme/Theme'
 import MainAppbar from './components/MainAppbar'
@@ -36,7 +33,6 @@ export default function App () {
     <UserProvider>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-
         <MainAppbar
           check={darkMode}
           change={() => setDarkMode(!darkMode)}

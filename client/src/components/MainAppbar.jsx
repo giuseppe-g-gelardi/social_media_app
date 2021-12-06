@@ -66,7 +66,6 @@ export default function MainAppBar(props) {
     </Link>
   )
   
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <HideOnScroll {...props}>

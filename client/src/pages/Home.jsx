@@ -1,12 +1,8 @@
 import React, { useContext } from 'react'
-// import React, { useState, useEffect } from 'react'
 import { Container } from '@material-ui/core'
-// import axios from 'axios'
-// import jwtDecode from 'jwt-decode'
 import FriendsList from '../components/FriendsList'
 
 import UserContext from '../context/UserContext'
-
 
 export default function Home() {
   const { user } = useContext(UserContext)
