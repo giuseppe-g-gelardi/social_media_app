@@ -8,6 +8,7 @@ import MainAppbar from './components/MainAppbar'
 import Home from './pages/Home'
 import Landing from './pages/Landing'
 import Error from './pages/Error'
+import Profile from './pages/Profile'
 
 import { UserProvider } from './context/UserContext'
 
@@ -17,17 +18,17 @@ export default function App () {
   const [isAuth, setIsAuth] = useState(false)
   const theme = darkMode ? darkTheme : lightTheme
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
-  const checkAuth = () => {
-    const token = localStorage.getItem('token')
-    setIsAuth(token !== null)
-    return isAuth ? navigate('/home') : navigate('/')
-  }
+  // const checkAuth = () => {
+  //   const token = localStorage.getItem('token')
+  //   setIsAuth(token !== null)
+  //   return isAuth ? navigate('/home') : navigate('/')
+  // }
 
-  useEffect(() => {
-    checkAuth()
-  }, [isAuth])
+  // useEffect(() => {
+  //   checkAuth()
+  // }, [isAuth])
 
   return (
     <UserProvider>
@@ -42,6 +43,7 @@ export default function App () {
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route path='/home' element={<Home />} />
+          <Route path='/profile' element={<Profile />} />
           <Route path='*' element={<Error />} />
         </Routes>
       </ThemeProvider>
