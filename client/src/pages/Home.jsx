@@ -14,7 +14,7 @@ export default function Home() {
         <button onClick={() => console.log(user)}>log user</button>
       </Container>
       <Container>
-        <FriendsList user={user} />
+        <FriendsList />
       </Container>
     </Container>
   )
