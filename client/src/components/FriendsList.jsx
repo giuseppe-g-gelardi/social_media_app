@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import UserContext from '../context/UserContext'
 
-export default function FriendsList(props) {
-  const { user } = props
+export default function FriendsList() {
+  const { user } = useContext(UserContext)
+
   return (
     <div>
       <h1>display friends list</h1>

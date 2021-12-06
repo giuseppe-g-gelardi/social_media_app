@@ -12,7 +12,7 @@ import Home from './pages/Home'
 import Landing from './pages/Landing'
 import Error from './pages/Error'
 
-
+import { UserProvider } from './context/UserContext'
 
 export default function App () {
 
@@ -33,6 +33,7 @@ export default function App () {
   }, [isAuth])
 
   return (
+    <UserProvider>
       <ThemeProvider theme={theme}>
         <CssBaseline />
 
@@ -48,6 +49,7 @@ export default function App () {
           <Route path='*' element={<Error />} />
         </Routes>
       </ThemeProvider>
+    </UserProvider>
   )
 }
 
