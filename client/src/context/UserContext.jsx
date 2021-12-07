@@ -15,28 +15,19 @@ export const UserProvider = ({ children }) => {
     const token = localStorage.getItem('token')
 
     if (token) {
-        const userid = jwtDecode(localStorage.getItem('token'))._id
+      const userid = jwtDecode(localStorage.getItem('token'))._id
  
-        axios
-          .get(`http://localhost:8000/api/users/${userid}`, {
-            headers: { 'x-auth-token': token }
-          })
-          .then(response => {
-            console.log(response.data)
-            setUser(response.data)
-          })
-          .catch(error => {
-            console.log(`Axios error: `, error)
-          })
+      axios.get(`http://localhost:8000/api/users/${userid}`, 
+        {headers: { 'x-auth-token': token }})
+        .then(response => {setUser(response.data)})
+        .catch(error => {console.log(`Axios error: `, error)})
     } else {
       return;
     }
   }
   
   return (
-    <UserContext.Provider value={{
-      user
-    }}>
+    <UserContext.Provider value={{user}}>
       {children}
     </UserContext.Provider>
   )

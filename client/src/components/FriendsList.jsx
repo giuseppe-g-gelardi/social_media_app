@@ -21,7 +21,6 @@ export default function FriendsList() {
   const { user } = useContext(UserContext)
   const [friendsList, setFriendsList] = useState([])
   const classes = useStyles()
-  // let friendsArray = []
 
   const getFriendsList = () => {
     user.friendsList?.map(async friends => {

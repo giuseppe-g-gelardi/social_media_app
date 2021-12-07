@@ -11,7 +11,6 @@ import IconButton from '@mui/material/IconButton';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 
-import Controls from './controls/Controls'
 import { deepPurple, pink } from '@material-ui/core/colors';
 
 const useStyles = makeStyles(theme => {
@@ -75,7 +74,6 @@ export default function MainAppBar(props) {
       <HideOnScroll {...props}>
         <AppBar position="fixed" 
           elevation={10} 
-          // style={{ backgroundColor: check ? 'grey' : 'lightGrey' }} 
           style={{ backgroundColor: check ? pink[200] : deepPurple[300] }} 
           enableColorOnDark>
           <Toolbar>
@@ -84,8 +82,6 @@ export default function MainAppBar(props) {
             </Typography>
 
               {isAuth ? authMenu : 'plz login'}
-
-            {/* <Controls.MuiSwitch onChange={change} checked={check} /> */}
 
             <IconButton sx={{ ml: 1 }} onClick={change} color="inherit">
               {check ? <Brightness7Icon /> : <Brightness4Icon />}

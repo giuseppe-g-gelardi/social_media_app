@@ -10,6 +10,8 @@ import Landing from './pages/Landing'
 import Error from './pages/Error'
 import Profile from './pages/Profile'
 
+import PrivateRoute from './components/PrivateRoute'
+
 import { UserProvider } from './context/UserContext'
 
 export default function App () {
@@ -40,39 +42,30 @@ export default function App () {
         />
         <Routes>
           <Route path='/' element={<Landing />} />
-          <Route path='/home' element={<Home />} />
-          <Route path='/profile' element={<Profile />} />
+
+          <Route 
+            path='/home' 
+            element={
+              <PrivateRoute>
+                <Home />
+              </PrivateRoute>
+            } 
+          />
+
+          <Route 
+            path='/profile' 
+            element={
+              <PrivateRoute>
+                <Profile />
+              </PrivateRoute>
+            } 
+          />
+
           <Route path='*' element={<Error />} />
+
         </Routes>
       </ThemeProvider>
       </StylesProvider>
     </UserProvider>
   )
 }
-
-
-
-// {!isAuth && (
-//   <>
-//     <Route path='/' element={<Landing />} />
-//   </>
-// )}
-// {isAuth && (
-//   <>
-//     <Route path='/home' element={<Home />} />
-//   </>
-// )}
-
-// {/* <Route
-// path='/home'
-// element={
-//   <RequireAuth>
-//     <Home />
-//   </RequireAuth>
-// }
-// /> */}
-
-  // function RequireAuth() {
-  //   return isAuth ? children : <Navigate to='/' />
-  // }
-
