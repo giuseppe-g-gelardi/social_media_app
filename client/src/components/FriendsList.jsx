@@ -1,20 +1,18 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import axios from 'axios'
 
 import UserContext from '../context/UserContext'
 
 export default function FriendsList() {
   const { user } = useContext(UserContext)
-  // const [friendsList, setFriendsList] = useState({})
-  let friendsList = []
+  let friendsArray = []
 
   const getFriendsList = () => {
     user.friendsList?.map(async friends => {
       let response = await axios.get(`http://localhost:8000/api/users/${friends}`)
-      console.log(response.data)
-      if (response.data) friendsList.push(response.data)
+      if (response.data) friendsArray.push(response.data)
     })
-    return friendsList
+    return friendsArray
   }
 
   useEffect(() => {
@@ -24,8 +22,8 @@ export default function FriendsList() {
   return (
     <div>
       <h1>display friends list</h1>
-      <button onClick={() => console.log(user.friendsList)}>log friends</button>
-      <button onClick={() => console.log(getFriendsList())}>log friends list</button>
+      <button onClick={() => console.log(user)}>log user</button>
+      <button onClick={() => console.log(friendsArray)}>log friends list</button>
     </div>
   )
 }
