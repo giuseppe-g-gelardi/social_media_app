@@ -11,7 +11,7 @@ export default function Profile() {
   return (
     <div>
       <h1>Profile page</h1>
-        welcome {username}
+        welcome back {username}
     </div>
   )
 }
