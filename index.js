@@ -7,6 +7,7 @@ const comments = require('./routes/comment')
 const users = require('./routes/users')
 const auth = require('./routes/auth')
 const friends = require('./routes/friends')
+const privatemessages = require('./routes/privatemessages')
 
 const app = express()
 
@@ -20,6 +21,7 @@ app.use('/api/users', users)
 app.use('/api/products', products)
 app.use('/api/auth', auth)
 app.use('/api/addFriend', friends)
+app.use('/api/messages', privatemessages)
 
 const port = process.env.PORT || 5000
 

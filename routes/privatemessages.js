@@ -27,7 +27,7 @@ router.post('/messages/new',(req,res) => {
     })
 })
 
-Router.listen(port,() => console.log(`Listening to localhost:${port}`))
+router.listen(port,() => console.log(`Listening to localhost:${port}`))
 
 
 
