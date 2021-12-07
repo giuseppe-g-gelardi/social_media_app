@@ -7,8 +7,12 @@ import { makeStyles } from '@material-ui/core'
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Slide from '@mui/material/Slide';
 import { Link, useNavigate } from 'react-router-dom'
+import IconButton from '@mui/material/IconButton';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 import Controls from './controls/Controls'
+import { deepPurple, pink } from '@material-ui/core/colors';
 
 const useStyles = makeStyles(theme => {
   return {
@@ -71,7 +75,9 @@ export default function MainAppBar(props) {
       <HideOnScroll {...props}>
         <AppBar position="fixed" 
           elevation={10} 
-          style={{ backgroundColor: check ? 'grey' : 'lightGrey' }} enableColorOnDark>
+          // style={{ backgroundColor: check ? 'grey' : 'lightGrey' }} 
+          style={{ backgroundColor: check ? pink[200] : deepPurple[300] }} 
+          enableColorOnDark>
           <Toolbar>
             <Typography variant="h5" component="div" sx={{flexGrow: 1}}>
               ello gov'na
@@ -79,7 +85,12 @@ export default function MainAppBar(props) {
 
               {isAuth ? authMenu : 'plz login'}
 
-            <Controls.MuiSwitch onChange={change} checked={check} />
+            {/* <Controls.MuiSwitch onChange={change} checked={check} /> */}
+
+            <IconButton sx={{ ml: 1 }} onClick={change} color="inherit">
+              {check ? <Brightness7Icon /> : <Brightness4Icon />}
+            </IconButton>
+
           </Toolbar>
         </AppBar>
       </HideOnScroll>
