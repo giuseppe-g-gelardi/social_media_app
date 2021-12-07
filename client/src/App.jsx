@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Routes, Route, useNavigate } from 'react-router-dom'
-import { ThemeProvider } from '@material-ui/core'
+import { Routes, Route } from 'react-router-dom'
+import { ThemeProvider, StylesProvider } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
 
 import { lightTheme, darkTheme } from './components/theme/Theme'
@@ -18,12 +18,9 @@ export default function App () {
   const [isAuth, setIsAuth] = useState(false)
   const theme = darkMode ? darkTheme : lightTheme
 
-  // const navigate = useNavigate()
-
   const checkAuth = () => {
     const token = localStorage.getItem('token')
     setIsAuth(token !== null)
-    // return isAuth ? navigate('/home') : navigate('/')
   }
 
   useEffect(() => {
@@ -32,6 +29,7 @@ export default function App () {
 
   return (
     <UserProvider>
+      <StylesProvider injectFirst>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <MainAppbar
@@ -47,6 +45,7 @@ export default function App () {
           <Route path='*' element={<Error />} />
         </Routes>
       </ThemeProvider>
+      </StylesProvider>
     </UserProvider>
   )
 }
@@ -77,33 +76,3 @@ export default function App () {
   //   return isAuth ? children : <Navigate to='/' />
   // }
 
-
-    // useEffect(() => {
-  //   getUserFromToken()
-  // }, [])
-
-  // const getUserFromToken = () => {
-  //   const token = localStorage.getItem('token')
-
-  //   if (token) {
-  //     try {
-  //       const userid = jwtDecode(localStorage.getItem('token'))._id
- 
-  //       axios
-  //         .get(`http://localhost:8000/api/users/${userid}`, {
-  //           headers: { 'x-auth-token': token }
-  //         })
-  //         .then(response => {
-  //           console.log(response.data)
-  //           setUser(response.data)
-  //         })
-  //         .catch(error => {
-  //           console.log(`Axios error: `, error)
-  //         })
-  //     } catch (err) {
-  //       console.log(err)
-  //     }
-  //   } else {
-  //     return;
-  //   }
-  // }

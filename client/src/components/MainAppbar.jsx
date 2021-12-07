@@ -10,7 +10,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 import Controls from './controls/Controls'
 
-const useStyles = makeStyles((theme) => {
+const useStyles = makeStyles(theme => {
   return {
     page: {
       width: '100%',
@@ -69,7 +69,9 @@ export default function MainAppBar(props) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <HideOnScroll {...props}>
-        <AppBar position="fixed" elevation={10} color='transparent'>
+        <AppBar position="fixed" 
+          elevation={10} 
+          style={{ backgroundColor: check ? 'grey' : 'lightGrey' }} enableColorOnDark>
           <Toolbar>
             <Typography variant="h5" component="div" sx={{flexGrow: 1}}>
               ello gov'na

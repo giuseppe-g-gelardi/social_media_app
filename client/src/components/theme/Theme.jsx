@@ -13,14 +13,27 @@ const baseTheme = createTheme({
 const lightTheme = createTheme({
   ...baseTheme,
   palette: {
-    type: 'light'
+    type: 'light',
+    primary: {
+      main: '#3f51b5',
+    },
+    secondary: {
+      main: '#f50057',
+    },
+
   },  
 })
 
 const darkTheme = createTheme({
   ...baseTheme,
   palette: {
-    type: 'dark'
+    type: 'dark',
+    primary: {
+      main: '#f50057'
+    },
+    secondary: {
+      main: '#3f51b5'
+    }
   },
 })
 
