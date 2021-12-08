@@ -16,7 +16,10 @@ const userSchema = new mongoose.Schema({
   friendsList: [{ type: mongoose.Types.ObjectId, default: []}],
   privateMessages: { type: Array, default: [] },
   friendRequests: {  type: Array, default: [] },
-  posts: { type: Array, default: [] }    
+  posts: { type: Array, default: [] },
+  firstName: { type: String, minlength: 1, maxlength: 255, default: "" },
+  lastname: { type: String, minlength: 1, maxlength: 255, default: "" },
+  themePreference: { type: Boolean, default: false },
 })
 
 userSchema.methods.generateAuthToken = function() {
