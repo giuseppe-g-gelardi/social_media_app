@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { makeStyles } from '@material-ui/core'
+import { makeStyles, Menu, MenuItem } from '@material-ui/core'
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Slide from '@mui/material/Slide';
 import { Link, useNavigate } from 'react-router-dom'
 import IconButton from '@mui/material/IconButton';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-
+import AccountCircle from '@mui/icons-material/AccountCircle';
 import { deepPurple, pink } from '@material-ui/core/colors';
 
 const useStyles = makeStyles(theme => {
@@ -60,22 +60,36 @@ export default function MainAppBar(props) {
   }
 
   let authMenu = (
-    <Link
-      to='/'
-      style={{ textDecoration: 'none' }}
-      onClick={() => logout()}
-    >
-      Logout
-    </Link>
+    <>
+    <span>
+      <Link
+        to='/profile'
+        style={{ textDecoration: 'none' }}
+      >
+        <AccountCircle />
+      </Link>
+      </span>
+      <span>
+      <Link
+        to='/'
+        style={{ textDecoration: 'none' }}
+        onClick={() => logout()}
+      >
+        Logout
+      </Link>
+      </span>
+    </>
   )
   
   return (
     <Box sx={{ flexGrow: 1 }}>
       <HideOnScroll {...props}>
-        <AppBar position="fixed" 
+        <AppBar 
+          position="fixed" 
           elevation={10} 
           style={{ backgroundColor: check ? pink[200] : deepPurple[300] }} 
-          enableColorOnDark>
+          enableColorOnDark
+          >
           <Toolbar>
             <Typography variant="h5" component="div" sx={{flexGrow: 1}}>
               ello gov'na

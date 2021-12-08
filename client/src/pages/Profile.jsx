@@ -6,7 +6,7 @@ import UserContext from '../context/UserContext'
 export default function Profile() {
   const { user } = useContext(UserContext)
 
-  const username = user.name
+  const username = user.firstName
 
   return (
     <div>

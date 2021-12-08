@@ -16,9 +16,7 @@ const userSchema = new mongoose.Schema({
   privateMessages: { type: Array, default: [] },
   friendRequests: {  type: Array, default: [] },
   posts: { type: Array, default: [] },
-  // firstName: { type: String, maxlength: 255, default: "" },
-  // lastname: { type: String, maxlength: 255, default: "" },
-  // themePreference: { type: String, default: "light" },
+  // themePreference: { type: String, default: "light" }, // 
 })
 
 userSchema.methods.generateAuthToken = function() {

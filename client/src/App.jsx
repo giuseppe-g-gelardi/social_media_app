@@ -4,14 +4,12 @@ import { ThemeProvider, StylesProvider } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
 
 import { lightTheme, darkTheme } from './components/theme/Theme'
-import MainAppbar from './components/MainAppbar'
 import Home from './pages/Home'
 import Landing from './pages/Landing'
 import Error from './pages/Error'
 import Profile from './pages/Profile'
-
+import MuiAppbar from './components/MuiAppbar'
 import PrivateRoute from './components/PrivateRoute'
-
 import { UserProvider } from './context/UserContext'
 
 export default function App () {
@@ -34,12 +32,14 @@ export default function App () {
       <StylesProvider injectFirst>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <MainAppbar
+  
+        <MuiAppbar 
           check={darkMode}
           change={() => setDarkMode(!darkMode)}
           isAuth={isAuth}
           setIsAuth={setIsAuth}
         />
+
         <Routes>
           <Route path='/' element={<Landing />} />
 
@@ -62,7 +62,6 @@ export default function App () {
           />
 
           <Route path='*' element={<Error />} />
-
         </Routes>
       </ThemeProvider>
       </StylesProvider>
