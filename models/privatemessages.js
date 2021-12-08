@@ -1,10 +1,23 @@
-import mongoose from 'mongoose';
+const Joi = require("joi");
+const mongoose = require("mongoose");
 
-const MessageSchema = mongoose.Schema( {
-    message: String,
-    name: String,
-    timestamp: String,
-    received: Boolean
+const messageSchema = mongoose.Schema( {
+    message: { type : String, required: true },
+    name: { type : String, required: true },
+    timestamp: { type: Date, default: Date.now() },
+    
 })
 
-export default mongoose.model('message',MessageSchema)
+const PrivateMessages = mongoose.model("PrivateMessages", messageSchema )
+
+function validatePrivateMessages(messages) {
+  const schema = joi.object({
+    message: Joi.string().required(),
+    name: Joi.string().required(),
+  })
+  return schema.validate(PrivateMessages)
+}
+
+
+module.exports.PrivateMessages = PrivateMessages;
+module.exports.validatePrivateMessages = validatePrivateMessages
