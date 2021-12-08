@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 import { FormControl, Container, Button, TextField } from '@material-ui/core'
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
 import { makeStyles } from '@material-ui/core/styles'
@@ -21,6 +22,7 @@ const useStyles = makeStyles({
 export default function RegistrationForm (props) {
 
   const { setOpenPopup } = props
+  const navigate = useNavigate()
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [userEmail, setUserEmail] = useState('')
@@ -44,9 +46,9 @@ export default function RegistrationForm (props) {
     await axios
       .post(api, user)
       .then(response => {
-        console.log(response)
         localStorage.setItem('token', response.headers['x-auth-token'])
         setOpenPopup(false)
+        navigate('/home')
         refreshPage()
       })
       .catch(error => {

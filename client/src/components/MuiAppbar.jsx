@@ -91,9 +91,14 @@ export default function MuiAppbar (props) {
     setMobileMoreAnchorEl(event.currentTarget)
   }
 
+  const refreshPage = () => {
+    window.location.reload()
+  }
+
   function logout () {
     localStorage.removeItem('token')
-    navigate('/')
+    refreshPage()
+    // navigate('/')
   }
 
   const menuId = 'primary-search-account-menu'

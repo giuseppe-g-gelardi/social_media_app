@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 import { FormControl, Container, Button, TextField } from '@material-ui/core'
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
 import { makeStyles } from '@material-ui/core/styles'
@@ -24,6 +25,7 @@ export default function LoginForm (props) {
   const [userEmail, setUserEmail] = useState('')
   const [userPassword, setUserPassword] = useState('')
   const classes = useStyles()
+  const navigate = useNavigate()
 
   const api = `http://localhost:8000/api/auth/login`
 
@@ -41,10 +43,9 @@ export default function LoginForm (props) {
     axios
       .post(api, user)
       .then(response => {
-        console.log(response)
-        console.log(response.data)
         localStorage.setItem('token', response.data)
         setOpenPopup(false)
+        navigate('/home')
         refreshPage()
       })
       .catch(error => {
