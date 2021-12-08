@@ -1,5 +1,5 @@
 const { User, validateUser } = require('../models/user')
-const { Product, validate } = require('../models/products')
+const { UserInfo, validate } = require('../models/userInfo')
 const bcrypt = require('bcrypt')
 const express = require('express')
 const router = express.Router()

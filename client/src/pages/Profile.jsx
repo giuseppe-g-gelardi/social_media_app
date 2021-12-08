@@ -10,8 +10,9 @@ export default function Profile() {
 
   return (
     <div>
-      <h1>Profile page</h1>
-        welcome back {username}
+      <h1>{username}'s profile!</h1>
+        Welcome back {username}
     </div>
   )
 }
+

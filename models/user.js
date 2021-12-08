@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const Joi = require('joi')
-const { productSchema } = require('./products')
+const { userInfoSchema } = require('./userInfo')
 const jwt = require('jsonwebtoken')
 const dotenv = require('dotenv')
 
@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, unique: true, required: true, minlength: 5, maxlength: 255 },
   password: { type: String, required: true, minlength: 5, maxlength: 1024 },
   isGoldMember: { type: String, default: false },
-  shoppingCart: { type: [productSchema], default: [] },
+  shoppingCart: { type: [userInfoSchema], default: [] },
   isAdmin: { type: Boolean, default: false },
   friendsList: [{ type: mongoose.Types.ObjectId, default: []}],
   privateMessages: { type: Array, default: [] },

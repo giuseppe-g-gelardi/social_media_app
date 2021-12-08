@@ -1,4 +1,4 @@
-const { Product, validate } = require('../models/products')
+const { UserInfo, validate } = require('../models/userInfo')
 const auth = require('../middleware/auth');
 const admin = require('../middleware/admin');
 const express = require('express')
