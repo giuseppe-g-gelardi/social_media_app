@@ -109,7 +109,8 @@ router.post('/register', async (req, res) => {
 
     const salt = await bcrypt.genSalt(10)
     user = new User({
-      name: req.body.name,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
       email: req.body.email,
       password: await bcrypt.hash(req.body.password, salt),
     })
@@ -155,36 +156,36 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-// ! Update user // still working on!
-router.put('/:id', async (req, res) => {
-  try {
-    const { error } = validate(req.body)
-    if (error) {
-      return res.status(400).send(error)
-    }
+// // ! Update user // still working on!
+// router.put('/:id', async (req, res) => {
+//   try {
+//     const { error } = validate(req.body)
+//     if (error) {
+//       return res.status(400).send(error)
+//     }
 
-    const user = await User.findByIdAndUpdate(
-      req.params.id,
-      {
-      name: req.body.name,
-      email: req.body.email,
-      password: await bcrypt.hash(req.body.password, salt),
-      },
-      { new: true }
-    )
+//     const user = await User.findByIdAndUpdate(
+//       req.params.id,
+//       {
+//       name: req.body.name,
+//       email: req.body.email,
+//       password: await bcrypt.hash(req.body.password, salt),
+//       },
+//       { new: true }
+//     )
 
-    if (!user) {
-      return res.status(400).send(`
-      The user with id: "${req.params.id}" does not exist.
-      `)
-    }
-      await user.save()
+//     if (!user) {
+//       return res.status(400).send(`
+//       The user with id: "${req.params.id}" does not exist.
+//       `)
+//     }
+//       await user.save()
 
-      return res.send(user)
-  } catch (ex) {
-    return res.send(500).send(`Internal Server Error: ${ex}`)
-  }
-})
+//       return res.send(user)
+//   } catch (ex) {
+//     return res.send(500).send(`Internal Server Error: ${ex}`)
+//   }
+// })
 
 // ! delete user // still working on!
 router.delete('/:id', async (req, res) => {
@@ -202,5 +203,27 @@ router.delete('/:id', async (req, res) => {
     return res.status(500).send(`Internal Server Error ${ex}`)
   }
 })
+
+// todo :|
+// router.put('/:id/update', auth, async (req, res) => {
+//   try {
+//     const { error } = validateUser(req.body)
+//     if (error) return res.status(400).send(error)
+
+//     const user = await User.findByIdAndUpdate(req.params.id)
+//     if (!user) return res.status(400).send(
+//       `The user with id: "${req.params.id}" does not exist.`
+//       )
+
+//     user.firstName = req.body.firstName;
+//     user.lastName = req.body.lastName;
+//     user.email = req.body.email;
+
+//     await user.save()
+//     return res.send(user)
+//   } catch (ex) {
+//     return res.status(500).send(`Internal Server Error: ${ex}`)
+// }
+// })
 
 module.exports = router

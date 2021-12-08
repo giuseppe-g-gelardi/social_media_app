@@ -21,7 +21,8 @@ const useStyles = makeStyles({
 export default function RegistrationForm (props) {
 
   const { setOpenPopup } = props
-  const [userName, setUserName] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [userEmail, setUserEmail] = useState('')
   const [userPassword, setUserPassword] = useState('')
   const classes = useStyles()
@@ -35,7 +36,8 @@ export default function RegistrationForm (props) {
     e.preventDefault()
 
     const user = {
-      name: userName,
+      firstName: firstName,
+      lastName: lastName,
       email: userEmail,
       password: userPassword
     }
@@ -59,9 +61,19 @@ export default function RegistrationForm (props) {
 
           <TextField
             style={{ marginBottom: 20 }}
-            onChange={e => setUserName(e.target.value)}
+            onChange={e => setFirstName(e.target.value)}
             className={classes.field}
-            label='Enter your name'
+            label='Enter your First Name'
+            variant='outlined'
+            fullWidth
+            required
+          />
+
+          <TextField
+            style={{ marginBottom: 20 }}
+            onChange={e => setLastName(e.target.value)}
+            className={classes.field}
+            label='Enter your Last Name'
             variant='outlined'
             fullWidth
             required

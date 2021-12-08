@@ -6,7 +6,7 @@ const userInfoSchema = new mongoose.Schema({
   lastName: { type: String, required: true, minlength: 2, maxlength: 20 },
   userName: { type: String, required: true, minlength: 5, maxlength: 20 },
   relationshipStatus: { type: String, required: true },
-  profilePicture: { type: String},
+  profilePicture: { type: String },
   coverPhoto: { type: String },
 
 })
