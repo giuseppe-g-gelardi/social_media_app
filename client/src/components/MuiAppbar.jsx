@@ -14,7 +14,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle'
 import MailIcon from '@mui/icons-material/Mail'
 import NotificationsIcon from '@mui/icons-material/Notifications'
 import MoreIcon from '@mui/icons-material/MoreVert'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { deepPurple, pink } from '@material-ui/core/colors';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
@@ -72,8 +72,6 @@ export default function MuiAppbar (props) {
   const isMenuOpen = Boolean(anchorEl)
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
 
-  const navigate = useNavigate()
-
   const handleProfileMenuOpen = event => {
     setAnchorEl(event.currentTarget)
   }
@@ -98,7 +96,6 @@ export default function MuiAppbar (props) {
   function logout () {
     localStorage.removeItem('token')
     refreshPage()
-    // navigate('/')
   }
 
   const menuId = 'primary-search-account-menu'
