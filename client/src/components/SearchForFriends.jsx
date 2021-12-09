@@ -84,7 +84,8 @@ export default function SearchForFriends () {
                   lastName={user.lastName}
                   dateJoined={user.dateJoined}
                   sendAction={sendFriendRequest}
-                  buttonText='Add Friend'
+                  buttonTextLeft='Add Friend'
+                  buttonTextRight='View Profile'
                 />
               </Grid>
             ))}

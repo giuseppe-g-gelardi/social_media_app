@@ -4,9 +4,7 @@ import { Avatar, ButtonGroup, Button, Card, CardContent, CardHeader, IconButton,
 
 export default function UserCard (props) {
 
-  const { firstName, lastName, dateJoined, sendAction, buttonText } = props
-
-  
+  const { firstName, lastName, dateJoined, sendAction, buttonTextLeft, buttonTextRight, viewProfile } = props
 
   return (
     <Card elevation={5} key={firstName}>
@@ -26,8 +24,17 @@ export default function UserCard (props) {
                 color='primary'
                 onClick={sendAction}
               >
-                {buttonText}
+                {buttonTextLeft}
             </Button>
+            </IconButton>
+
+            <IconButton>
+              <Button
+                color='primary'
+                onClick={viewProfile}
+              >
+                {buttonTextRight}
+              </Button>
             </IconButton>
         </ButtonGroup>
         

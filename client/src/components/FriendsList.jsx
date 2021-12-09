@@ -37,6 +37,10 @@ export default function FriendsList () {
     console.log('message sent')
   }
 
+  const viewProfile = (id) => {
+    console.log('friends profile')
+  }
+
   useEffect(() => {
     getFriendsList()
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -57,7 +61,9 @@ export default function FriendsList () {
                 lastName={friends.lastName}
                 dateJoined={friends.dateJoined}
                 sendAction={sendMessage}
-                buttonText='Send Message'
+                buttonTextLeft='Send Message'
+                viewProfile={viewProfile}
+                buttonTextRight='View Profile'
               />
             </Grid>
           ))}
