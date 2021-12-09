@@ -1,17 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
-import {
-  Avatar,
-  Card,
-  CardContent,
-  CardHeader,
-  Container,
-  Grid,
-  Typography
-} from '@material-ui/core'
+import { Container, Grid } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
 import UserContext from '../context/UserContext'
+import Controls from './controls/Controls'
 
 const useStyles = makeStyles({
   field: {
@@ -57,18 +50,11 @@ export default function FriendsList () {
         <Grid container spacing={3}>
           {friendsList.map(friends => (
             <Grid item key={friends.firstName} sx={12} md={12} lg={12}>
-              <Card elevation={5} key={friends.firstName}>
-                <CardHeader avatar={<Avatar>{friends.firstName[0]}</Avatar>} />
-                <CardContent>
-                  <Typography variant='body2' color='textSecondary'>
-                    {friends.firstName} {friends.lastName}
-                  </Typography>
-
-                  <Typography variant='body2' color='textSecondary'>
-                    member since {user.dateJoined}
-                  </Typography>
-                </CardContent>
-              </Card>
+              <Controls.UserCard elevation={5} key={friends}
+                firstName={friends.firstName}
+                lastName={friends.lastName}
+                dateJoined={friends.dateJoined}
+              />
             </Grid>
           ))}
         </Grid>
