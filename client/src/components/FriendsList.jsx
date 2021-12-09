@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
-import { Container, Grid } from '@material-ui/core'
+import { Container, Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
 import UserContext from '../context/UserContext'
@@ -48,11 +48,10 @@ export default function FriendsList () {
   }, [user])
 
   return (
-    <div>
-      <h1>display friends list</h1>
-      <button onClick={() => console.log(user)}>log user</button>
-      <button onClick={() => console.log(friendsList)}>friends list</button>
-
+    <Container>
+      <Typography style={{ display: 'flex' }}>
+      Your friends list
+      </Typography>
       <Container className={classes.field} style={{ display: 'flex', marginTop: '75px' }}>
         <Grid container spacing={3}>
           {friendsList.map(friends => (
@@ -72,6 +71,6 @@ export default function FriendsList () {
           ))}
         </Grid>
       </Container>
-    </div>
+    </Container>
   )
 }

@@ -1,17 +1,18 @@
 import React, { useContext } from 'react'
-import { Container } from '@material-ui/core'
+import { Container, Typography } from '@material-ui/core'
 import FriendsList from '../components/FriendsList'
 
 import UserContext from '../context/UserContext'
 
-export default function Home() {
+export default function Home () {
   const { user } = useContext(UserContext)
-  
+
   return (
     <Container>
-      <Container >
-        <h1>Welcome back {user.firstName}</h1>
-        <button onClick={() => console.log(user)}>log user</button>
+      <Container>
+        <Typography variant='h2'>
+          Welcome back {user.firstName}
+        </Typography>
       </Container>
       <Container>
         <FriendsList />
