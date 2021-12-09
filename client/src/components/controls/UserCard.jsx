@@ -1,18 +1,9 @@
 import React from 'react'
-import {
-  Avatar,
-  Card,
-  CardContent,
-  CardHeader,
-  Container,
-  Grid,
-  Typography
-} from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import { Avatar, Card, CardContent, CardHeader, Typography } from '@material-ui/core'
 
 export default function UserCard (props) {
 
-  const { children, firstName, lastName, dateJoined } = props
+  const { firstName, lastName, dateJoined } = props
 
   return (
     <Card elevation={5} key={firstName}>
