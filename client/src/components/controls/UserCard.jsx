@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Avatar, ButtonGroup, Button, Card, Container, CardContent, CardHeader, IconButton, Typography } from '@material-ui/core'
 import Controls from './Controls'
 import ViewFriendProfile from '../ViewFriendProfile'
-import { set } from 'express/lib/response'
 
 export default function UserCard (props) {
 
@@ -64,6 +63,7 @@ export default function UserCard (props) {
         dateJoined={dateJoined}
         friends={friends}
         viewProfile={viewProfile}
+        posts={friends.posts}
       />
     </Controls.Popup>
     </Container>

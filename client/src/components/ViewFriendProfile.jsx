@@ -4,7 +4,7 @@ import CommentBox from '../components/CommentBox'
 
 export default function ViewFriendProfile (props) {
 
-  const { firstName, lastName, dateJoined, posts, children, friends, viewProfile} = props
+  const { firstName, lastName, posts } = props
   
   return (
     <>
