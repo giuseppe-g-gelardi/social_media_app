@@ -13,16 +13,16 @@ import {
 import Controls from './Controls'
 import ViewFriendProfile from '../ViewFriendProfile'
 
-export default function SearchCards(props) {
+export default function SearchCards (props) {
   const {
     friends,
     firstName,
     lastName,
     dateJoined,
     sendAction,
-    buttonTextLeft,
-    buttonTextRight,
-    viewProfile
+    buttonTextLeft
+    // buttonTextRight,
+    // viewProfile
   } = props
   const [openPopup, setOpenPopup] = useState(false)
 
@@ -44,7 +44,7 @@ export default function SearchCards(props) {
                 </Button>
               </IconButton>
 
-              <IconButton>
+              {/* <IconButton>
                 <Button
                   color='primary'
                   onClick={() =>
@@ -55,7 +55,7 @@ export default function SearchCards(props) {
                 >
                   {buttonTextRight}
                 </Button>
-              </IconButton>
+              </IconButton> */}
             </ButtonGroup>
           }
         />
@@ -79,7 +79,7 @@ export default function SearchCards(props) {
           lastName={lastName}
           dateJoined={dateJoined}
           friends={friends}
-          viewProfile={viewProfile}
+          // viewProfile={viewProfile}
         />
       </Controls.Popup>
     </Container>
