@@ -1,22 +1,35 @@
 import React from 'react'
-import {
-  Avatar,
-  Card,
-  CardContent,
-  CardHeader,
-  Container,
-  Grid,
-  Typography
-} from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import { Avatar, ButtonGroup, Button, Card, CardContent, CardHeader, IconButton, Typography } from '@material-ui/core'
 
 export default function UserCard (props) {
 
-  const { children, firstName, lastName, dateJoined } = props
+  const { firstName, lastName, dateJoined, sendAction, buttonText } = props
 
   return (
     <Card elevation={5} key={firstName}>
-      <CardHeader avatar={<Avatar>{firstName[0]}</Avatar>} />
+      <CardHeader 
+      avatar={
+        <Avatar
+          color='primary'
+        >
+          {firstName[0]}
+        </Avatar>
+      } 
+        action={
+          <ButtonGroup variant='contained'>
+            <IconButton>
+            <Button
+                color='secondary'
+                onClick={sendAction}
+              >
+                {buttonText}
+            </Button>
+            </IconButton>
+        </ButtonGroup>
+        
+        
+        }
+      />
       <CardContent>
         <Typography variant='body2' color='textSecondary'>
           {firstName} {lastName}

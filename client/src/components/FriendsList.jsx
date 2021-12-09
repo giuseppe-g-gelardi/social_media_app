@@ -33,8 +33,13 @@ export default function FriendsList () {
     return friendsList
   }
 
+  const sendMessage = () => {
+    console.log('message sent')
+  }
+
   useEffect(() => {
     getFriendsList()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
 
   return (
@@ -43,10 +48,7 @@ export default function FriendsList () {
       <button onClick={() => console.log(user)}>log user</button>
       <button onClick={() => console.log(friendsList)}>friends list</button>
 
-      <Container
-        className={classes.field}
-        style={{ display: 'flex', marginTop: '75px' }}
-      >
+      <Container className={classes.field} style={{ display: 'flex', marginTop: '75px' }}>
         <Grid container spacing={3}>
           {friendsList.map(friends => (
             <Grid item key={friends.firstName} sx={12} md={12} lg={12}>
@@ -54,6 +56,8 @@ export default function FriendsList () {
                 firstName={friends.firstName}
                 lastName={friends.lastName}
                 dateJoined={friends.dateJoined}
+                sendAction={sendMessage}
+                buttonText='Send Message'
               />
             </Grid>
           ))}
