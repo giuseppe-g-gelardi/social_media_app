@@ -38,6 +38,7 @@ export default function FriendsList () {
   }
 
   const viewProfile = (id) => {
+    axios.get(`http://localhost:8000/api/users/${user._id}`)
     console.log('friends profile')
   }
 
@@ -64,6 +65,7 @@ export default function FriendsList () {
                 buttonTextLeft='Send Message'
                 viewProfile={viewProfile}
                 buttonTextRight='View Profile'
+                id={friends._id}
               />
             </Grid>
           ))}

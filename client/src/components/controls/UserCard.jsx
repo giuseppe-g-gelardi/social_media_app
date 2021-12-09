@@ -4,7 +4,7 @@ import { Avatar, ButtonGroup, Button, Card, CardContent, CardHeader, IconButton,
 
 export default function UserCard (props) {
 
-  const { firstName, lastName, dateJoined, sendAction, buttonTextLeft, buttonTextRight, viewProfile } = props
+  const { id, firstName, lastName, dateJoined, sendAction, buttonTextLeft, buttonTextRight, viewProfile } = props
 
   return (
     <Card elevation={5} key={firstName}>
