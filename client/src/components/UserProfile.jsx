@@ -2,9 +2,26 @@ import React, { useContext } from 'react'
 import { Box, Card, Container, Typography, Avatar } from '@material-ui/core'
 import UserContext from '../context/UserContext'
 import CommentBox from '../components/CommentBox'
+import Controls from './controls/Controls'
 
 export default function UserProfile () {
   const { user } = useContext(UserContext)
+
+  const renderPostContainer = (
+    <Container>
+      {user.posts?.map(post => (
+        <Controls.PostContainer post={post} firstName={user.firstName} />
+      ))}
+    </Container>
+  )
+
+  const noPosts = (
+    <Container>
+      <Card>
+        <Typography variant='h2'>User has no posts to show</Typography>
+      </Card>
+    </Container>
+  )
 
   return (
     <>
@@ -24,14 +41,7 @@ export default function UserProfile () {
           I'm {user.firstName} {user.lastName}
         </Typography>
 
-        <Container key={user.posts}>
-          {user.posts?.map(post => (
-            <Card>
-              {user.firstName} says: {post}
-            </Card>
-          ))}
-        </Container>
-
+        {user.posts.length > 0 ? renderPostContainer : noPosts}
         <CommentBox />
       </Container>
     </>
