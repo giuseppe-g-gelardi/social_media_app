@@ -66,6 +66,7 @@ export default function FriendsList () {
                 viewProfile={viewProfile}
                 buttonTextRight='View Profile'
                 id={friends._id}
+                friends={friends}
               />
             </Grid>
           ))}

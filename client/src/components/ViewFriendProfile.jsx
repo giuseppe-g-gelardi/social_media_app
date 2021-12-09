@@ -1,11 +1,11 @@
-import React, { useContext } from 'react'
+import React  from 'react'
 import { Box, Card, Container, Typography, Avatar } from '@material-ui/core'
-import UserContext from '../context/UserContext'
 import CommentBox from '../components/CommentBox'
 
-export default function UserProfile () {
-  const { user } = useContext(UserContext)
+export default function ViewFriendProfile (props) {
 
+  const { firstName, lastName, dateJoined, posts, children, friends, viewProfile} = props
+  
   return (
     <>
       <Container
@@ -13,21 +13,21 @@ export default function UserProfile () {
       >
         <Box>
           <Avatar>
-            {user?.firstName[0]}
-            {user?.lastName[0]}
+            {firstName[0]}
+            {lastName[0]}
           </Avatar>
         </Box>
 
         <Typography variant='h1'>Hey!</Typography>
 
         <Typography variant='h3'>
-          I'm {user.firstName} {user.lastName}
+          I'm {firstName} {lastName}
         </Typography>
 
-        <Container key={user.posts}>
-          {user.posts?.map(post => (
+        <Container key={posts}>
+          {posts?.map(post => (
             <Card>
-              {user.firstName} says: {post}
+              {firstName} says: {post}
             </Card>
           ))}
         </Container>

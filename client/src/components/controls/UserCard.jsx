@@ -1,12 +1,16 @@
-import React from 'react'
-import { Avatar, ButtonGroup, Button, Card, CardContent, CardHeader, IconButton, Typography } from '@material-ui/core'
-
+import React, { useState } from 'react'
+import { Avatar, ButtonGroup, Button, Card, Container, CardContent, CardHeader, IconButton, Typography } from '@material-ui/core'
+import Controls from './Controls'
+import ViewFriendProfile from '../ViewFriendProfile'
+import { set } from 'express/lib/response'
 
 export default function UserCard (props) {
 
-  const { id, firstName, lastName, dateJoined, sendAction, buttonTextLeft, buttonTextRight, viewProfile } = props
+  const { friends, firstName, lastName, dateJoined, sendAction, buttonTextLeft, buttonTextRight, viewProfile } = props
+  const [openPopup, setOpenPopup] = useState(false)
 
   return (
+    <Container>
     <Card elevation={5} key={firstName}>
       <CardHeader 
       avatar={
@@ -31,14 +35,12 @@ export default function UserCard (props) {
             <IconButton>
               <Button
                 color='primary'
-                onClick={viewProfile}
+                onClick={() => `${viewProfile(friends)}${console.log(friends)}${setOpenPopup(true)}`}
               >
                 {buttonTextRight}
               </Button>
             </IconButton>
         </ButtonGroup>
-        
-        
         }
       />
       <CardContent>
@@ -51,5 +53,19 @@ export default function UserCard (props) {
         </Typography>
       </CardContent>
     </Card>
+    <Controls.Popup
+      text='friends profile'
+      openPopup={openPopup}
+      setOpenPopup={setOpenPopup}
+    >
+      <ViewFriendProfile 
+        firstName={firstName}
+        lastName={lastName}
+        dateJoined={dateJoined}
+        friends={friends}
+        viewProfile={viewProfile}
+      />
+    </Controls.Popup>
+    </Container>
   )
 }
