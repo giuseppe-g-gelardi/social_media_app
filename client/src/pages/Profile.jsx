@@ -1,6 +1,7 @@
 import { useContext } from 'react'
-
 import UserContext from '../context/UserContext'
+import CommentBox from '../components/CommentBox'
+
 
 
 export default function Profile() {
@@ -10,8 +11,10 @@ export default function Profile() {
 
   return (
     <div>
-      <h1>{username}'s profile!</h1>
+      <h1> {username}'s profile!</h1>
         Welcome back {username}
+
+        * <CommentBox />
     </div>
   )
 }
