@@ -1,11 +1,27 @@
-import React  from 'react'
+import React from 'react'
 import { Box, Card, Container, Typography, Avatar } from '@material-ui/core'
 import CommentBox from '../components/CommentBox'
+import Controls from './controls/Controls'
 
 export default function ViewFriendProfile (props) {
-
   const { firstName, lastName, posts } = props
-  
+
+  const renderPostContainer = (
+    <Container>
+      {posts?.map(post => (
+        <Controls.PostContainer post={post} firstName={firstName} />
+      ))}
+    </Container>
+  )
+
+  const noPosts = (
+    <Container>
+      <Card>
+        <Typography variant='h2'>User has no posts to show</Typography>
+      </Card>
+    </Container>
+  )
+
   return (
     <>
       <Container
@@ -24,13 +40,7 @@ export default function ViewFriendProfile (props) {
           I'm {firstName} {lastName}
         </Typography>
 
-        <Container key={posts}>
-          {posts?.map(post => (
-            <Card>
-              {firstName} says: {post}
-            </Card>
-          ))}
-        </Container>
+        {posts.length > 0 ? renderPostContainer : noPosts}
 
         <CommentBox />
       </Container>
