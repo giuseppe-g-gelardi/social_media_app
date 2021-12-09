@@ -22,6 +22,8 @@ app.use('/api/products', products)
 app.use('/api/auth', auth)
 app.use('/api/addFriend', friends)
 app.use('/api/messages', privatemessages)
+app.use('api/deleteFriendRequest', friends)
+app.use('api/sendFriendRequest', friends)
 
 const port = process.env.PORT || 5000
 

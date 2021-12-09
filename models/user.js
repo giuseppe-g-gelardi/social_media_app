@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
   isAdmin: { type: Boolean, default: false },
   friendsList: [{ type: mongoose.Types.ObjectId, default: []}],
   privateMessages: { type: Array, default: [] },
-  friendRequests: {  type: Array, default: [] },
+  friendRequests: [{type: mongoose.Types.ObjectId, default:[]}],
   posts: { type: Array, default: [] },
   // themePreference: { type: String, default: "light" }, // 
 })
