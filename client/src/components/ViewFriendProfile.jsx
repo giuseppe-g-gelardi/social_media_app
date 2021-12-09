@@ -27,14 +27,17 @@ export default function ViewFriendProfile (props) {
       <Container
         style={{ display: 'grid', justifyContent: 'center', marginTop: '10%' }}
       >
-        <Box>
-          <Avatar>
-            {firstName[0]}
-            {lastName[0]}
-          </Avatar>
-        </Box>
-
-        <Typography variant='h1'>Hey!</Typography>
+        <Container style={{ display: 'flex' }}>
+          <Typography variant='h1' style={{ flexGrow: 1 }}>
+            Hey!
+          </Typography>
+          <Box>
+            <Avatar style={{ flexGrow: 1 }}>
+              {firstName[0]}
+              {lastName[0]}
+            </Avatar>
+          </Box>
+        </Container>
 
         <Typography variant='h3'>
           I'm {firstName} {lastName}
