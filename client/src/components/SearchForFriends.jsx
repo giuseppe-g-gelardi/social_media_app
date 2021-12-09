@@ -79,13 +79,14 @@ export default function SearchForFriends () {
             })
             .map((user, i) => (
               <Grid item key={user._id} sx={12} md={6} lg={4}>
-                <Controls.UserCard
+                <Controls.SearchCards
                   firstName={user.firstName}
                   lastName={user.lastName}
                   dateJoined={user.dateJoined}
                   sendAction={sendFriendRequest}
                   buttonTextLeft='Add Friend'
                   buttonTextRight='View Profile'
+                  // posts={user.posts}
                 />
               </Grid>
             ))}
