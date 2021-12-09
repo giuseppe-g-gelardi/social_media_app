@@ -23,8 +23,8 @@ app.use('/api/products', products)
 app.use('/api/auth', auth)
 app.use('/api/addFriend', friends)
 app.use('/api/messages', privatemessages)
-app.use('api/deleteFriendRequest', friends)
-app.use('api/sendFriendRequest', friends)
+app.use('/api/deleteFriendRequest', friends)
+app.use('/api/sendFriendRequest', friends)
 
 // app.use(express.static(path.join(__dirname, 'client/build')))
 
