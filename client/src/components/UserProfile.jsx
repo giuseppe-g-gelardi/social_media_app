@@ -28,14 +28,17 @@ export default function UserProfile () {
       <Container
         style={{ display: 'grid', justifyContent: 'center', marginTop: '10%' }}
       >
-        <Box>
-          <Avatar>
-            {user?.firstName[0]}
-            {user?.lastName[0]}
-          </Avatar>
-        </Box>
-
-        <Typography variant='h1'>Hey!</Typography>
+        <Container style={{ display: 'flex' }}>
+          <Typography variant='h1' style={{ flexGrow: 1 }}>
+            Hey!
+          </Typography>
+          <Box style={{ flexGrow: 1 }}>
+            <Avatar>
+              {user?.firstName[0]}
+              {user?.lastName[0]}
+            </Avatar>
+          </Box>
+        </Container>
 
         <Typography variant='h3'>
           I'm {user.firstName} {user.lastName}
