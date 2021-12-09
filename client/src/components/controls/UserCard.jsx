@@ -1,9 +1,12 @@
 import React from 'react'
 import { Avatar, ButtonGroup, Button, Card, CardContent, CardHeader, IconButton, Typography } from '@material-ui/core'
 
+
 export default function UserCard (props) {
 
   const { firstName, lastName, dateJoined, sendAction, buttonText } = props
+
+  
 
   return (
     <Card elevation={5} key={firstName}>
@@ -12,14 +15,15 @@ export default function UserCard (props) {
         <Avatar
           color='primary'
         >
-          {firstName[0]}
+          {firstName[0]}{lastName[0]}
         </Avatar>
+        
       } 
         action={
           <ButtonGroup variant='contained'>
             <IconButton>
             <Button
-                color='secondary'
+                color='primary'
                 onClick={sendAction}
               >
                 {buttonText}
