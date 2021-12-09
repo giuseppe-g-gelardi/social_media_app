@@ -32,6 +32,10 @@ export default function SearchForFriends () {
     await axios.get(api).then(res => setAllUsers(res.data)).catch(e => console.log(e))
   }
 
+  const sendFriendRequest = () => {
+    console.log('friend request sent')
+  }
+
   useEffect(() => {
     getUsers()
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -60,7 +64,7 @@ export default function SearchForFriends () {
         <Grid container spacing={1}>
           {allUsers
             // eslint-disable-next-line array-callback-return
-            .filter((val, i) => {
+            .filter(val => {
               let searchString = ''
               for (let value of Object.entries(val)) {
                 searchString += `${value}\t`
@@ -79,6 +83,8 @@ export default function SearchForFriends () {
                   firstName={user.firstName}
                   lastName={user.lastName}
                   dateJoined={user.dateJoined}
+                  sendAction={sendFriendRequest}
+                  buttonText='Add Friend'
                 />
               </Grid>
             ))}
